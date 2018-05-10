@@ -1,0 +1,39 @@
+﻿<Window x:Class="Project_WPF.Check"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_WPF"
+        mc:Ignorable="d"
+        Title="Check" Height="552.024" Width="1176.263" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ListView SelectedIndex="0" x:Name="checklList" Height="331" Margin="0,86,71,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Product Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="70" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="60" Header="Quantity"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="80" Header="Total Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="120" Header="Client Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="120" Header="Client Last Name"/>
+                    <!--<GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Category"/>-->
+
+                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="100" Header="Date"/>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="93,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Search: " HorizontalAlignment="Left" Margin="21,41,0,0" VerticalAlignment="Top" Width="58" Height="36"/>
+        <Label Content="Product Name" HorizontalAlignment="Left" Margin="92,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSubCategoryName" HorizontalAlignment="Left" Height="23" Margin="256,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Sub Category Name" HorizontalAlignment="Left" Margin="255,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Height="23" Margin="426,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Category Name" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtClientLastName" HorizontalAlignment="Left" Height="23" Margin="572,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Client Last Name" HorizontalAlignment="Left" Margin="571,10,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

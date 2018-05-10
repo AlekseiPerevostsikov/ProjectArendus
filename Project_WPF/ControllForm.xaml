@@ -1,0 +1,43 @@
+﻿<Window x:Class="Project_WPF.ControllForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_WPF"
+        mc:Ignorable="d"
+        Title="Controll Form" Height="336.364" Width="560" WindowState="Maximized">
+    <Grid>
+
+
+        <Menu Height="22" VerticalAlignment="Top" >
+            <MenuItem Header="File">
+                <MenuItem Header="something" ></MenuItem>
+
+                <Separator />
+                <MenuItem Header="Exit"  Click="MenuItem_Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Add">
+                <MenuItem Header="Add Product" Click="MenuItem_AddProduct" ></MenuItem>
+                <MenuItem Header="Add Category" Click="MenuItem_AddCategory"></MenuItem>
+                <MenuItem Header="Add SubCategory" Click="MenuItem_AddSubCategory"></MenuItem>
+                <MenuItem Header="Add Client" Click="MenuItem_AddClient"></MenuItem>
+                <MenuItem Header="Add Provider" Click="MenuItem_AddProvider"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" >
+                <MenuItem  Name="MenuItemEditProduct" Header="Edit Product" Click="MenuItem_EditProduct" ></MenuItem>
+                <MenuItem Name="MenuItemEditCategory" Header="Edit Category" Click="MenuItem_EditCategory"></MenuItem>
+                <MenuItem Name="MenuItemEditSubCategory" Header="Edit SubCategory" Click="MenuItem_EditSubCategory"></MenuItem>
+                <MenuItem Name="MenuItemEditClient" Header="Edit Client" Click="MenuItem_EditClient"></MenuItem>
+                <MenuItem Name="MenuItemEditProvider" Header="Edit Provider" Click="MenuItem_EditProvider"></MenuItem>
+            </MenuItem>
+           
+            <MenuItem Header="Add Arrived products" Click="MenuItem_AddArrivedProducts"></MenuItem>
+            <MenuItem Header="Buy Product" Click="MenuItem_BuyProduct"></MenuItem>
+            <MenuItem Header="Show Products" Click="MenuItem_ShowProducts"></MenuItem>
+            <MenuItem Header="Checks" Click="MenuItem_ShowChecks"></MenuItem>
+        </Menu>
+        <Button Content="Disable" HorizontalAlignment="Left" Margin="114,163,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
+        <Button Content="Enable" HorizontalAlignment="Left" Margin="264,163,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_1"/>
+
+    </Grid>
+</Window>
