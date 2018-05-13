@@ -1,0 +1,16 @@
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.csprojAssemblyReference.cache
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.csproj.CoreCompileInputs.cache
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.AssemblyInfoInputs.cache
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.AssemblyInfo.cs
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\LaduDB.deps.json
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\LaduDB.dll
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\LaduDB.pdb
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.Configuration.dll
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.Security.dll
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.Configuration.xml
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\bin\Debug\netstandard2.0\System.Security.xml
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.csproj.CopyComplete
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.dll
+C:\Users\artix\Source\Repos\ProjectArendus\LaduDB\obj\Debug\netstandard2.0\LaduDB.pdb

@@ -23,6 +23,8 @@ namespace Project_WPF
         public MainWindow()
         {
             InitializeComponent();
+            DataInitializer data = new DataInitializer();
+            data.InitializeDatabase(new Context());
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)

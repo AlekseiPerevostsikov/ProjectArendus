@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_WPF", "Project_WPF\Project_WPF.csproj", "{09BB3B45-3F04-40D7-AB8E-FC78C2A65623}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaduDB", "LaduDB\LaduDB.csproj", "{80E6A6BE-A3F0-4036-8D6C-311937AEF1E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{09BB3B45-3F04-40D7-AB8E-FC78C2A65623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09BB3B45-3F04-40D7-AB8E-FC78C2A65623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09BB3B45-3F04-40D7-AB8E-FC78C2A65623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E6A6BE-A3F0-4036-8D6C-311937AEF1E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E6A6BE-A3F0-4036-8D6C-311937AEF1E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E6A6BE-A3F0-4036-8D6C-311937AEF1E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E6A6BE-A3F0-4036-8D6C-311937AEF1E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
