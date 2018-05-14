@@ -186,7 +186,26 @@ namespace Project_WPF
         {
             if (productlList.SelectedIndex >= 0)
             {
+                if (MessageBox.Show("Delete Product \"" + DB.GetProductByProductId(productId).Nimi + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Toode deleteProduct = DB.GetProductByProductId(productId);
 
+                    int arv = DB.DeleteProduct(deleteProduct);
+
+                    if (arv != 0)
+                    {
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        productlList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
             }
             else
             {
@@ -261,7 +280,26 @@ namespace Project_WPF
         {
             if (categorylList.SelectedIndex >= 0)
             {
+                if (MessageBox.Show("Delete Category \"" + DB.GetCategoryByCategoryId(categoryId).Nimi + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Kategooria deleteCategory = DB.GetCategoryByCategoryId(categoryId);
 
+                    int arv = DB.DeleteCategory(deleteCategory);
+
+                    if (arv != 0)
+                    {
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        categorylList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
             }
             else
             {
@@ -289,7 +327,26 @@ namespace Project_WPF
         {
             if (subCategorylList.SelectedIndex >= 0)
             {
+                if (MessageBox.Show("Delete Sub Category \"" + DB.GetSubCategoryBySubCategoryId(subCategoryId).Nimi + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Alamkategooria deleteSubCategory = DB.GetSubCategoryBySubCategoryId(subCategoryId);
 
+                    int arv = DB.DeleteSubCategory(deleteSubCategory);
+
+                    if (arv != 0)
+                    {
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        subCategorylList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
             }
             else
             {
@@ -316,7 +373,26 @@ namespace Project_WPF
         {
             if (clientList.SelectedIndex >= 0)
             {
+                if (MessageBox.Show("Delete Klient \"" + DB.GetClientByClientId(clientId).Nimi +" "+ DB.GetClientByClientId(clientId).Perekonnanimi + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Klient deleteKlient = DB.GetClientByClientId(clientId);
 
+                    int arv = DB.DeleteClient(deleteKlient);
+
+                    if (arv != 0)
+                    {
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        clientList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
             }
             else
             {

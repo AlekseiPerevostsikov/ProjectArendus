@@ -543,7 +543,7 @@ namespace Project_WPF
         }
 
 
-        public static int DeleteKlient(Klient klient)
+        public static int DeleteClient(Klient klient)
         {
             int error = 0;
             try
