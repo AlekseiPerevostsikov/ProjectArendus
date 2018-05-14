@@ -12,7 +12,7 @@ namespace LaduDB
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
         public String Nimi { get; set; }
-        public long KategoriaFK { get; set; }
+        public long AlamKategoriaFK { get; set; }
         public int Kogus { get; set; }
         public String KoodToode { get; set; }
         public double Hind { get; set; }

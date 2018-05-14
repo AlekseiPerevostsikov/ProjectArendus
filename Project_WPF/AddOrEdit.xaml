@@ -19,6 +19,7 @@
         <TextBox x:Name="txt5" HorizontalAlignment="Left" Height="23" Margin="230,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cb5" HorizontalAlignment="Left" Margin="230,206,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cb2" HorizontalAlignment="Left" Margin="230,72,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn" Content="Button" HorizontalAlignment="Left" Margin="230,254,0,0" VerticalAlignment="Top" Width="120" Click="btn_Click"/>
 
     </Grid>
 </Window>

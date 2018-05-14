@@ -20,7 +20,7 @@ namespace Project_WPF
         ///
 
 
-
+            
         public static List<Alamkategooria> GetAllSubCategory()
         {
             return c.Alamkategoorias.ToList();

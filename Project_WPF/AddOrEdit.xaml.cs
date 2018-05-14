@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LaduDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,27 +45,36 @@ namespace Project_WPF
 
 
 
+            //      Add value
+
+
             if (Controll.Name == "addProduct")
             {
                 lbl1.Visibility = Visibility.Visible;
                 lbl2.Visibility = Visibility.Visible;
-                lbl3.Visibility = Visibility.Visible;
-                lbl4.Visibility = Visibility.Visible;
+               // lbl3.Visibility = Visibility.Visible;
+               // lbl4.Visibility = Visibility.Visible;
                 lbl5.Visibility = Visibility.Visible;
 
                 lbl1.Content = "Product name";
                 lbl2.Content = "Product code";
-                lbl3.Content = "Quantity";
-                lbl4.Content = "Product price";
+               // lbl3.Content = "Quantity";
+               // lbl4.Content = "Product price";
                 lbl5.Content = "Category";
 
                 txt1.Visibility = Visibility.Visible;
                 txt2.Visibility = Visibility.Visible;
-                txt3.Visibility = Visibility.Visible;
-                txt4.Visibility = Visibility.Visible;
+               // txt3.Visibility = Visibility.Visible;
+               // txt4.Visibility = Visibility.Visible;
                 cb5.Visibility = Visibility.Visible;
 
-                cb5.ItemsSource= new string[] { "Auto", "Phone", "TV"};
+                foreach (var item in DB.GetAllSubCategory())
+                {
+                    cb5.Items.Add(item.Nimi);
+                }
+                
+
+                btn.Content = "Add Product";
             }
 
 
@@ -75,6 +85,8 @@ namespace Project_WPF
                 lbl1.Content = "Category name";
 
                 txt1.Visibility = Visibility.Visible;
+
+                btn.Content = "Add Category";
             }
 
 
@@ -92,6 +104,9 @@ namespace Project_WPF
                 cb2.Visibility = Visibility.Visible;
 
                 cb2.ItemsSource = new string[] { "1", "2", "3" };
+
+
+                btn.Content = "Add Sub Category";
             }
 
 
@@ -117,6 +132,7 @@ namespace Project_WPF
                 txt4.Visibility = Visibility.Visible;
                 txt5.Visibility = Visibility.Visible;
 
+                btn.Content = "Add Client";
             }
 
 
@@ -133,6 +149,9 @@ namespace Project_WPF
                 txt1.Visibility = Visibility.Visible;
                 txt2.Visibility = Visibility.Visible;
                 txt3.Visibility = Visibility.Visible;
+
+
+                btn.Content = "Add Provider";
             }
 
 
@@ -170,6 +189,8 @@ namespace Project_WPF
                 txt4.Text = "Product Price";
                
                 cb5.ItemsSource = new string[] { "Auto", "Phone", "TV" };
+
+                btn.Content = "Edit Product";
             }
 
 
@@ -181,6 +202,8 @@ namespace Project_WPF
 
                 txt1.Visibility = Visibility.Visible;
                 txt1.Text = "category";
+
+                btn.Content = "Edit Category";
             }
 
 
@@ -201,6 +224,8 @@ namespace Project_WPF
 
                
                 cb2.ItemsSource = new string[] { "1", "2", "3" };
+
+                btn.Content = "Edit Sub Category";
             }
 
 
@@ -231,6 +256,8 @@ namespace Project_WPF
                 txt3.Text = "phone";
                 txt4.Text = "Address";
                 txt5.Text = "eMail";
+
+                btn.Content = "Edit Client";
             }
 
 
@@ -255,6 +282,112 @@ namespace Project_WPF
                 txt1.Text = "Name";
                 txt2.Text = "FN";
                 txt3.Text = "Address";
+
+                btn.Content = "Edit Provider";
+            }
+
+
+
+
+        }
+
+
+
+        //          Btn pressed
+
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //      Add value
+
+
+            if (Controll.Name == "addProduct")
+            {
+                Toode newProduct = new Toode();
+                newProduct.Nimi = txt1.Text;
+                newProduct.KoodToode = txt2.Text;
+                newProduct.AlamKategoriaFK = cb5.SelectedIndex;
+
+                int error = DB.AddProduct(newProduct);
+                if (error!=0)
+                {
+                    MessageBox.Show("Was Added!", "Succesful");
+                }
+                else
+                {
+                    MessageBox.Show("Error while adding!", "Error");
+                }
+    }
+
+
+
+            else if (Controll.Name == "addCategory")
+            {
+                
+            }
+
+
+
+            else if (Controll.Name == "addSubCategory")
+            {
+                
+            }
+
+
+
+            else if (Controll.Name == "addClient")
+            {
+                
+            }
+
+
+            else if (Controll.Name == "addProvider")
+            {
+                
+            }
+
+
+
+
+
+
+
+            //Edit value
+
+
+            if (Controll.Name == "editProduct")
+            {
+               
+            }
+
+
+
+            else if (Controll.Name == "editCategory")
+            {
+               
+            }
+
+
+
+
+            else if (Controll.Name == "editSubCategory")
+            {
+                
+            }
+
+
+
+            else if (Controll.Name == "editClient")
+            {
+               
+            }
+
+
+
+            else if (Controll.Name == "editProvider")
+            {
+                
             }
         }
     }

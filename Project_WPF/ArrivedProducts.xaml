@@ -33,7 +33,7 @@
             </ListView.View>
 
         </ListView>
-        <Label Content="Product" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl" Content="Product" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="136"/>
         <Label Content="Provider" HorizontalAlignment="Left" Margin="699,25,0,0" VerticalAlignment="Top" Width="58"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="402,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="331,25,0,0" VerticalAlignment="Top" Width="57"/>
@@ -46,7 +46,7 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Provider Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Provider Name"/>
                 </GridView>
             </ListView.View>
 

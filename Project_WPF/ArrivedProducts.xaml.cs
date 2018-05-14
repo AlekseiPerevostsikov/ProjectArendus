@@ -39,7 +39,8 @@ namespace Project_WPF
 
         private void FormActivated(object sender, EventArgs e)
         {
-           
+            loadProductData();
+            loadProviderData();
         }
 
 
@@ -48,7 +49,7 @@ namespace Project_WPF
 
         private void FormLoaded(object sender, RoutedEventArgs e)
         {
-            loadProductData();
+            
         }
 
         public void loadProductData()
@@ -59,6 +60,18 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
+        }
+
+        public void loadProviderData()
+        {
+            ObservableCollection<Pakkuja> providerItems = new ObservableCollection<Pakkuja>();
+            foreach (Pakkuja i in DB.GetAllProviders().OrderBy(a => a.Nimi))
+            {
+                providerItems.Add(i);
+            }
+            providerlList.ItemsSource = providerItems;
+
+
         }
 
 
