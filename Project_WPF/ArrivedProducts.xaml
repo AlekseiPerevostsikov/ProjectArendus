@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF"
         mc:Ignorable="d"
-        Title="Arrived Products" Height="692" Width="1008" WindowStartupLocation="CenterScreen">
+        Title="Arrived Products" Height="692" Width="1008" WindowStartupLocation="CenterScreen" Activated="FormActivated" Loaded="FormLoaded">
     <Grid>
         <ListView SelectedIndex="0" x:Name="ArrivedProductlList" Height="336" Margin="10,260,200,0" VerticalAlignment="Top">
 
@@ -26,9 +26,9 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
                 </GridView>
             </ListView.View>
 

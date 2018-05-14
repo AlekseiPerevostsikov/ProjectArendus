@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LaduDB;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,5 +33,36 @@ namespace Project_WPF
             Controll.Name = "addProduct";
             addOrEdit.Show();
         }
+
+
+       
+
+        private void FormActivated(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+       
+
+        private void FormLoaded(object sender, RoutedEventArgs e)
+        {
+            loadProductData();
+        }
+
+        public void loadProductData()
+        {
+            ObservableCollection<Toode> productItems = new ObservableCollection<Toode>();
+            foreach (Toode i in DB.GetAllProducts().OrderBy(a => a.Nimi))
+            {
+                productItems.Add(i);
+            }
+            productlList.ItemsSource = productItems;
+        }
+
+
+
+
     }
 }
