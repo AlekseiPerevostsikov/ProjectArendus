@@ -68,11 +68,18 @@ namespace Project_WPF
                // txt4.Visibility = Visibility.Visible;
                 cb5.Visibility = Visibility.Visible;
 
-                foreach (var item in DB.GetAllSubCategory())
+
+
+                Dictionary<int, string> cbProductData = new Dictionary<int, string>();
+                var value = DB.GetAllSubCategory();//.OrderBy(a=>a.Nimi);
+                foreach (var item in value)
                 {
-                    cb5.Items.Add(item.Nimi);
+                    cbProductData.Add(item.ID, item.Nimi + " (" + item.Kategooria.Nimi + ")");
                 }
-                
+
+                cb5.ItemsSource = cbProductData;
+                cb5.DisplayMemberPath = "Value";
+                cb5.SelectedValuePath = "Key";
 
                 btn.Content = "Add Product";
             }
@@ -307,7 +314,7 @@ namespace Project_WPF
                 Toode newProduct = new Toode();
                 newProduct.Nimi = txt1.Text;
                 newProduct.KoodToode = txt2.Text;
-                newProduct.AlamKategoriaFK = cb5.SelectedIndex;
+                newProduct.AlamKategoriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
 
                 int error = DB.AddProduct(newProduct);
                 if (error!=0)

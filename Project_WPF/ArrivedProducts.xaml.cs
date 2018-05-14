@@ -21,6 +21,8 @@ namespace Project_WPF
     /// </summary>
     public partial class ArrivedProducts : Window
     {
+        Toode ProductControllStatuss;
+
         public ArrivedProducts()
         {
             InitializeComponent();
@@ -35,24 +37,21 @@ namespace Project_WPF
         }
 
 
-       
+
 
         private void FormActivated(object sender, EventArgs e)
         {
-            loadProductData();
-            loadProviderData();
+            LoadProductData();
+            LoadProviderData();
         }
 
-
-
-       
 
         private void FormLoaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
-        public void loadProductData()
+        public void LoadProductData()
         {
             ObservableCollection<Toode> productItems = new ObservableCollection<Toode>();
             foreach (Toode i in DB.GetAllProducts().OrderBy(a => a.Nimi))
@@ -62,7 +61,7 @@ namespace Project_WPF
             productlList.ItemsSource = productItems;
         }
 
-        public void loadProviderData()
+        public void LoadProviderData()
         {
             ObservableCollection<Pakkuja> providerItems = new ObservableCollection<Pakkuja>();
             foreach (Pakkuja i in DB.GetAllProviders().OrderBy(a => a.Nimi))
@@ -70,12 +69,18 @@ namespace Project_WPF
                 providerItems.Add(i);
             }
             providerlList.ItemsSource = providerItems;
-
-
         }
 
+        private void ProductSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0)
+            {
+                ProductControllStatuss = (Toode)productlList.SelectedItems[0];
 
+                lbl.Content = ProductControllStatuss.Nimi + " " + ProductControllStatuss.KoodToode + " " + ProductControllStatuss.AlamKategoriaId;
+            }
+           
 
-
+        }
     }
 }

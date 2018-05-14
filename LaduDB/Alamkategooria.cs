@@ -11,9 +11,9 @@ namespace LaduDB
     {
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
+        public int ID { get; set; }
         public String Nimi { get; set; }
-        public long KategooriaFK { get; set; }
+        public int KategooriaId { get; set; }
 
         public virtual Kategooria Kategooria { get; set; }
         public virtual ICollection<Toode> Toodes { get; set; }

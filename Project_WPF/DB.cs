@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project_WPF
 {
-    class DB
+     public class DB
     {
         static Context c = new Context();
 

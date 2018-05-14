@@ -22,7 +22,7 @@
         </ListView>
         <Button x:Name="btnAddToTemp" Content="Add to temp" HorizontalAlignment="Left" Margin="868,209,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Temporary data" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-0.025,0.718"/>
-        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,56,478,0" VerticalAlignment="Top">
+        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,56,478,0" VerticalAlignment="Top" SelectionChanged="ProductSelectionChanged">
 
             <ListView.View>
                 <GridView>
@@ -33,7 +33,7 @@
             </ListView.View>
 
         </ListView>
-        <Label x:Name="lbl" Content="Product" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl" Content="Product" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="244"/>
         <Label Content="Provider" HorizontalAlignment="Left" Margin="699,25,0,0" VerticalAlignment="Top" Width="58"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="402,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="331,25,0,0" VerticalAlignment="Top" Width="57"/>

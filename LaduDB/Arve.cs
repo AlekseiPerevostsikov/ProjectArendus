@@ -10,8 +10,8 @@ namespace LaduDB
     public class Arve
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
-        public long OstukorviFK { get; set; }
+        public int ID { get; set; }
+        public int OstukorviId { get; set; }
         public DateTime Date { get; set; }
         
 
