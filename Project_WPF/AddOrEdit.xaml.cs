@@ -20,6 +20,16 @@ namespace Project_WPF
     /// </summary>
     public partial class AddOrEdit : Window
     {
+        int productId;
+        int providerId;
+        int categoryId;
+        int subCategoryId;
+        int clientId;
+
+        Pakkuja tempProvider;
+
+
+
         public AddOrEdit()
         {
             InitializeComponent();
@@ -27,6 +37,14 @@ namespace Project_WPF
 
         private void AddFormLoaded(object sender, RoutedEventArgs e)
         {
+            productId = Controll.ProductId;
+            providerId = Controll.ProviderId;
+            categoryId = Controll.CategoryId;
+            subCategoryId = Controll.SubCategoryId;
+            clientId = Controll.ClientId;
+
+
+
             lbl1.Visibility = Visibility.Hidden;
             lbl2.Visibility = Visibility.Hidden;
             lbl3.Visibility = Visibility.Hidden;
@@ -42,7 +60,13 @@ namespace Project_WPF
             cb2.Visibility = Visibility.Hidden;
             cb5.Visibility = Visibility.Hidden;
 
-
+            
+                Dictionary<int, string> cbProductData = new Dictionary<int, string>();
+                var value = DB.GetAllSubCategory().OrderBy(a=>a.Kategooria.Nimi);
+                foreach (var item in value)
+                {
+                    cbProductData.Add(item.ID, item.Nimi + " (" + item.Kategooria.Nimi + ")");
+                }
 
 
             //      Add value
@@ -70,12 +94,6 @@ namespace Project_WPF
 
 
 
-                Dictionary<int, string> cbProductData = new Dictionary<int, string>();
-                var value = DB.GetAllSubCategory().OrderBy(a=>a.Kategooria.Nimi);
-                foreach (var item in value)
-                {
-                    cbProductData.Add(item.ID, item.Nimi + " (" + item.Kategooria.Nimi + ")");
-                }
 
                 cb5.ItemsSource = cbProductData;
                 cb5.DisplayMemberPath = "Value";
@@ -112,8 +130,8 @@ namespace Project_WPF
                 cb2.Visibility = Visibility.Visible;
 
                 Dictionary<int, string> cbCategoryData = new Dictionary<int, string>();
-                var value = DB.GetAllCategorys().OrderBy(a => a.Nimi);
-                foreach (var item in value)
+                var valued = DB.GetAllCategory().OrderBy(a => a.Nimi);
+                foreach (var item in valued)
                 {
                     cbCategoryData.Add(item.ID, item.Nimi);
                 }
@@ -185,28 +203,33 @@ namespace Project_WPF
             {
                 lbl1.Visibility = Visibility.Visible;
                 lbl2.Visibility = Visibility.Visible;
-                lbl3.Visibility = Visibility.Visible;
-                lbl4.Visibility = Visibility.Visible;
+                //lbl3.Visibility = Visibility.Visible;
+                //lbl4.Visibility = Visibility.Visible;
                 lbl5.Visibility = Visibility.Visible;
 
                 lbl1.Content = "Product name";
                 lbl2.Content = "Product code";
-                lbl3.Content = "Quantity";
-                lbl4.Content = "Product price";
+                //lbl3.Content = "Quantity";
+                //lbl4.Content = "Product price";
                 lbl5.Content = "Category";
 
                 txt1.Visibility = Visibility.Visible;
                 txt2.Visibility = Visibility.Visible;
-                txt3.Visibility = Visibility.Visible;
-                txt4.Visibility = Visibility.Visible;
+               // txt3.Visibility = Visibility.Visible;
+                //txt4.Visibility = Visibility.Visible;
                 cb5.Visibility = Visibility.Visible;
 
                 txt1.Text = "Product name";
                 txt2.Text = "Product code";
-                txt3.Text = "Quantity";
-                txt4.Text = "Product Price";
+                //txt3.Text = "Quantity";
+                //txt4.Text = "Product Price";
                
-                cb5.ItemsSource = new string[] { "Auto", "Phone", "TV" };
+                cb5.ItemsSource = cbProductData;
+                cb5.DisplayMemberPath = "Value";
+                cb5.SelectedValuePath = "Key";
+                                                                                    //item.ID, item.Nimi + " (" + item.Kategooria.Nimi + ")"
+                cb5.SelectedItem = new KeyValuePair<int, string>(subCategoryId, DB.GetSubCategoryBySubCategoryId(subCategoryId).Nimi + " (" + DB.GetSubCategoryBySubCategoryId(subCategoryId).Kategooria.Nimi + ")");
+
 
                 btn.Content = "Edit Product";
             }
@@ -282,6 +305,9 @@ namespace Project_WPF
 
             else if (Controll.Name == "editProvider")
             {
+                tempProvider = DB.GetProviderByProviderId(providerId);
+
+
                 lbl1.Visibility = Visibility.Visible;
                 lbl2.Visibility = Visibility.Visible;
                 lbl3.Visibility = Visibility.Visible;
@@ -297,9 +323,9 @@ namespace Project_WPF
                 txt2.Visibility = Visibility.Visible;
                 txt3.Visibility = Visibility.Visible;
 
-                txt1.Text = "Name";
-                txt2.Text = "FN";
-                txt3.Text = "Address";
+                txt1.Text = tempProvider.Nimi;
+                txt2.Text = tempProvider.FN;
+                txt3.Text = tempProvider.Aadress;
 
                 btn.Content = "Edit Provider";
             }
@@ -495,7 +521,28 @@ namespace Project_WPF
 
             else if (Controll.Name == "editProvider")
             {
-                
+                try
+                {
+                    Pakkuja updateProvider = new Pakkuja();
+                    updateProvider.ID = providerId;
+                    updateProvider.Nimi = txt1.Text;
+                    updateProvider.FN = txt2.Text;
+                    updateProvider.Aadress = txt3.Text;
+
+                    int error = DB.UpdateProvider(updateProvider);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Updated!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while updating!", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                }
             }
         }
     }

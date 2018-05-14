@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LaduDB;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +21,326 @@ namespace Project_WPF
     /// </summary>
     public partial class ControllForm : Window
     {
+        Toode ProductControllStatuss;
+        Pakkuja ProviderControllStatuss;
+        Kategooria CategoryControllStatuss;
+        Alamkategooria SubCategoryControllStatuss;
+        Klient ClientControllStatuss;
+
+        int productId;
+        int providerId;
+        int categoryId;
+        int subCategoryId;
+        int clientId;
+
         public ControllForm()
         {
             InitializeComponent();
         }
 
+        private void FormActivated(object sender, EventArgs e)
+        {
+            LoadProductData();
+            LoadProviderData();
+            LoadCategoryData();
+            LoadSubCategoryData();
+            LoadClientData();
+        }
+
+
+
+        //      Load data to grid
+
+
+        public void LoadProductData()
+        {
+            ObservableCollection<Toode> productItems = new ObservableCollection<Toode>();
+            foreach (var i in DB.GetAllProducts().OrderBy(a => a.Nimi))
+            {
+                productItems.Add(i);
+            }
+            productlList.ItemsSource = productItems;
+        }
+
+        public void LoadProviderData()
+        {
+            ObservableCollection<Pakkuja> providerItems = new ObservableCollection<Pakkuja>();
+            foreach (var i in DB.GetAllProviders().OrderBy(a => a.Nimi))
+            {
+                providerItems.Add(i);
+            }
+            providerlList.ItemsSource = providerItems;
+        }
+
+
+        public void LoadCategoryData()
+        {
+            ObservableCollection<Kategooria> categoryItems = new ObservableCollection<Kategooria>();
+            foreach (var i in DB.GetAllCategory().OrderBy(a => a.Nimi))
+            {
+                categoryItems.Add(i);
+            }
+            categorylList.ItemsSource = categoryItems;
+        }
+
+
+        public void LoadSubCategoryData()
+        {
+            ObservableCollection<Alamkategooria> subCategoryItems = new ObservableCollection<Alamkategooria>();
+            foreach (var i in DB.GetAllSubCategory().OrderBy(a => a.Nimi))
+            {
+                subCategoryItems.Add(i);
+            }
+            subCategorylList.ItemsSource = subCategoryItems;
+        }
+
+
+        public void LoadClientData()
+        {
+            ObservableCollection<Klient> klientItems = new ObservableCollection<Klient>();
+            foreach (var i in DB.GetAllKlients().OrderBy(a => a.Perekonnanimi))
+            {
+                klientItems.Add(i);
+            }
+            clientList.ItemsSource = klientItems;
+        }
+
+
+
+        //      Selection changed
+
+        private void ProductSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0)
+            {
+                ProductControllStatuss = (Toode)productlList.SelectedItems[0];
+                productId = ProductControllStatuss.ID;
+               // subCategoryId = ProductControllStatuss.Alamkategooria.ID;
+            }
+        }
+
+
+        private void ProviderSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (providerlList.SelectedIndex >= 0)
+            {
+                ProviderControllStatuss = (Pakkuja)providerlList.SelectedItems[0];
+                providerId = ProviderControllStatuss.ID;
+            }
+        }
+
+        private void CategorySelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (categorylList.SelectedIndex >= 0)
+            {
+                CategoryControllStatuss = (Kategooria)categorylList.SelectedItems[0];
+                categoryId = CategoryControllStatuss.ID;
+            }
+        }
+
+        private void SubCategorySelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (subCategorylList.SelectedIndex >= 0)
+            {
+                SubCategoryControllStatuss = (Alamkategooria)subCategorylList.SelectedItems[0];
+                subCategoryId = SubCategoryControllStatuss.ID;
+            }
+        }
+
+
+
+        private void KleintSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (clientList.SelectedIndex >= 0)
+            {
+                ClientControllStatuss = (Klient)clientList.SelectedItems[0];
+                clientId = ClientControllStatuss.ID;
+            }
+        }
+
+
+
+
+
+
+        //      Btn Edit Or Delete
+
+
+        private void btnEditProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0)
+            {
+                AddOrEdit addOrEdit = new AddOrEdit();
+                Controll.Name = "editProduct";
+                Controll.ProductId = productId;
+                addOrEdit.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Product not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Product not choosed!", "Error");
+            }
+        }
+
+        private void btnEditProvider_Click(object sender, RoutedEventArgs e)
+        {
+            if (providerlList.SelectedIndex >= 0)
+            {
+                AddOrEdit addOrEdit = new AddOrEdit();
+                Controll.Name = "editProvider";
+                Controll.ProviderId = providerId;
+                addOrEdit.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Provider not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteProvider_Click(object sender, RoutedEventArgs e)
+        {
+            if (providerlList.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("Delete Provider \"" + DB.GetProviderByProviderId(providerId).Nimi + "\"?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    Pakkuja deleteProvider = DB.GetProviderByProviderId(providerId);
+
+                    int arv = DB.DeleteProvider(deleteProvider);
+
+                    if (arv != 0)
+                    {
+                        MessageBox.Show("Was deleted!", "Succesful");
+                        providerlList.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while deleting!", "Error");
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Provider not choosed!", "Error");
+            }
+        }
+
+        private void btnEditCategory_Click(object sender, RoutedEventArgs e)
+        {
+            if (categorylList.SelectedIndex >= 0)
+            {
+                AddOrEdit addOrEdit = new AddOrEdit();
+                Controll.Name = "editCategory";
+                Controll.CategoryId = categoryId;
+                addOrEdit.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Category not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            if (categorylList.SelectedIndex >= 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Category not choosed!", "Error");
+            }
+        }
+
+        private void btnEditSubCategory_Click(object sender, RoutedEventArgs e)
+        {
+            if (subCategorylList.SelectedIndex >= 0)
+            {
+                AddOrEdit addOrEdit = new AddOrEdit();
+                Controll.Name = "editSubCategory";
+                Controll.SubCategoryId = subCategoryId;
+                addOrEdit.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Sub Category not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteSubCategory_Click(object sender, RoutedEventArgs e)
+        {
+            if (subCategorylList.SelectedIndex >= 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Sub Category not choosed!", "Error");
+            }
+        }
+
+        private void btnEditKlient_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientList.SelectedIndex >= 0)
+            {
+                AddOrEdit addOrEdit = new AddOrEdit();
+                Controll.Name = "editClient";
+                Controll.ClientId = clientId;
+                addOrEdit.Show();
+            }
+            else
+            {
+                MessageBox.Show("Client not choosed!", "Error");
+            }
+        }
+
+        private void btnDeleteKlient_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientList.SelectedIndex >= 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Client not choosed!", "Error");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //          Menu items
+
+
         private void MenuItem_Exit(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
-
 
 
 
@@ -159,10 +471,17 @@ namespace Project_WPF
             Check check = new Check();
             check.Show();
         }
+
+
     }
 
     public static class Controll
     {
         public static string Name { get; set; }
+        public static int ProductId { get; set; }
+        public static int ProviderId { get; set; }
+        public static int CategoryId { get; set; }
+        public static int SubCategoryId { get; set; }
+        public static int ClientId { get; set; }
     }
 }
