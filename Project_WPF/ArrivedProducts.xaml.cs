@@ -22,6 +22,7 @@ namespace Project_WPF
     public partial class ArrivedProducts : Window
     {
         Toode ProductControllStatuss;
+       // int productId;
 
         public ArrivedProducts()
         {
@@ -76,11 +77,14 @@ namespace Project_WPF
             if (productlList.SelectedIndex >= 0)
             {
                 ProductControllStatuss = (Toode)productlList.SelectedItems[0];
+                //productId = ProductControllStatuss.ID;
 
-                lbl.Content = ProductControllStatuss.Nimi + " " + ProductControllStatuss.KoodToode + " " + ProductControllStatuss.AlamKategoriaId;
+              //  lbl.Content = ProductControllStatuss.Nimi + " " + ProductControllStatuss.KoodToode + " " + ProductControllStatuss.AlamKategoriaId;
             }
            
-
         }
+
+
+        
     }
 }

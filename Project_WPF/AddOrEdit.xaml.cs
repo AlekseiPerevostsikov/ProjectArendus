@@ -71,7 +71,7 @@ namespace Project_WPF
 
 
                 Dictionary<int, string> cbProductData = new Dictionary<int, string>();
-                var value = DB.GetAllSubCategory();//.OrderBy(a=>a.Nimi);
+                var value = DB.GetAllSubCategory().OrderBy(a=>a.Kategooria.Nimi);
                 foreach (var item in value)
                 {
                     cbProductData.Add(item.ID, item.Nimi + " (" + item.Kategooria.Nimi + ")");
@@ -80,6 +80,7 @@ namespace Project_WPF
                 cb5.ItemsSource = cbProductData;
                 cb5.DisplayMemberPath = "Value";
                 cb5.SelectedValuePath = "Key";
+                cb5.SelectedIndex = 0;
 
                 btn.Content = "Add Product";
             }
@@ -110,7 +111,17 @@ namespace Project_WPF
 
                 cb2.Visibility = Visibility.Visible;
 
-                cb2.ItemsSource = new string[] { "1", "2", "3" };
+                Dictionary<int, string> cbCategoryData = new Dictionary<int, string>();
+                var value = DB.GetAllCategorys().OrderBy(a => a.Nimi);
+                foreach (var item in value)
+                {
+                    cbCategoryData.Add(item.ID, item.Nimi);
+                }
+
+                cb2.ItemsSource = cbCategoryData;
+                cb2.DisplayMemberPath = "Value";
+                cb2.SelectedValuePath = "Key";
+                cb2.SelectedIndex = 0;
 
 
                 btn.Content = "Add Sub Category";
@@ -311,19 +322,27 @@ namespace Project_WPF
 
             if (Controll.Name == "addProduct")
             {
-                Toode newProduct = new Toode();
-                newProduct.Nimi = txt1.Text;
-                newProduct.KoodToode = txt2.Text;
-                newProduct.AlamKategoriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
+                try
+                {
+                    Toode newProduct = new Toode();
+                    newProduct.Nimi = txt1.Text;
+                    newProduct.KoodToode = txt2.Text;
+                    newProduct.AlamKategoriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
 
-                int error = DB.AddProduct(newProduct);
-                if (error!=0)
-                {
-                    MessageBox.Show("Was Added!", "Succesful");
+                    int error = DB.AddProduct(newProduct);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error while adding!", "Error");
+
+                     MessageBox.Show("Error "+ex.ToString()+"!", "Error");
                 }
     }
 
@@ -331,27 +350,109 @@ namespace Project_WPF
 
             else if (Controll.Name == "addCategory")
             {
+                try
+                {
+                    Kategooria newCategory = new Kategooria();
+                    newCategory.Nimi = txt1.Text;
                 
+                    int error = DB.AddCategory(newCategory);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                }
             }
 
 
 
             else if (Controll.Name == "addSubCategory")
             {
-                
+                try
+                {
+                    Alamkategooria newSubCategory = new Alamkategooria();
+                    newSubCategory.Nimi = txt1.Text;
+                    newSubCategory.KategooriaId= ((KeyValuePair<int, string>)cb2.SelectedItem).Key;
+
+                    int error = DB.AddSubCategory(newSubCategory);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                }
             }
 
 
 
             else if (Controll.Name == "addClient")
             {
-                
+                try
+                {
+                    Klient newKlient = new Klient();
+                    newKlient.Nimi = txt1.Text;
+                    newKlient.Perekonnanimi = txt2.Text;
+                    newKlient.Telefon = txt3.Text;
+                    newKlient.Aadress = txt4.Text;
+                    newKlient.Email = txt5.Text;
+
+                    int error = DB.AddKlient(newKlient);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                }
+
             }
 
 
             else if (Controll.Name == "addProvider")
             {
-                
+                try
+                {
+                    Pakkuja newProvider = new Pakkuja();
+                    newProvider.Nimi = txt1.Text;
+                    newProvider.FN = txt2.Text;
+                    newProvider.Aadress = txt3.Text;
+
+                    int error = DB.AddProvider(newProvider);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                }
+
+
             }
 
 
