@@ -373,7 +373,7 @@ namespace Project_WPF
         }
 
 
-        public static int UpdateKlient(Klient klient)
+        public static int UpdateClient(Klient klient)
         {
             int error = 0;
             try
