@@ -7,22 +7,9 @@
         mc:Ignorable="d"
         Title="Controll Form" Height="553.364" Width="1360.2" WindowState="Maximized" Activated="FormActivated">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="308*"/>
-            <ColumnDefinition Width="201*"/>
-            <ColumnDefinition Width="180*"/>
-            <ColumnDefinition Width="264*"/>
-            <ColumnDefinition Width="284*"/>
-            <ColumnDefinition Width="115*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="206*"/>
-            <RowDefinition Height="165*"/>
-            <RowDefinition Height="152*"/>
-        </Grid.RowDefinitions>
 
 
-        <Menu Height="22" VerticalAlignment="Top" Grid.ColumnSpan="6" >
+        <Menu Height="22" VerticalAlignment="Top" >
             <MenuItem Header="File">
                 <MenuItem Header="something" ></MenuItem>
 
@@ -49,57 +36,58 @@
             <MenuItem Header="Show Products" Click="MenuItem_ShowProducts"></MenuItem>
             <MenuItem Header="Checks" Click="MenuItem_ShowChecks"></MenuItem>
         </Menu>
-        <Button Content="Disable" HorizontalAlignment="Left" Margin="8,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click" Height="19.96"/>
-        <Button Content="Enable" HorizontalAlignment="Left" Margin="158,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_1" Height="19.96"/>
-        <ListView SelectedIndex="0" x:Name="productlList" Margin="18.172,54,8.173,10" SelectionChanged="ProductSelectionChanged" Grid.ColumnSpan="2">
-
+        
+        
+        <Button Content="Disable" HorizontalAlignment="Left" Margin="8,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
+        <Button Content="Enable" HorizontalAlignment="Left" Margin="158,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_1"/>
+        
+        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,54,721,0" VerticalAlignment="Top" SelectionChanged="ProductSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="215" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="100" Header="Quantity"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <ListView SelectedIndex="0" x:Name="providerlList" Margin="22.377,54,21.162,7.749" SelectionChanged="ProviderSelectionChanged" Grid.Column="3">
-
+        
+        <ListView SelectedIndex="0" x:Name="providerlList" Height="144" Margin="932,54,152,0" VerticalAlignment="Top" SelectionChanged="ProviderSelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="225" Header="Provider Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Provider Name"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <Button x:Name="btnEditProduct" Content="Edit" HorizontalAlignment="Left" Margin="15,70.06,0,0" VerticalAlignment="Top" Width="75" Click="btnEditProduct_Click" Grid.Column="2" Height="19.96"/>
-        <Button x:Name="btnDeleteProduct" Content="Delete" HorizontalAlignment="Left" Margin="15,125,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteProduct_Click" Grid.Column="2" Height="19.96"/>
-        <Button x:Name="btnEditProvider" Content="Edit" HorizontalAlignment="Left" Margin="13.183,83.01,0,0" VerticalAlignment="Top" Width="75" Click="btnEditProvider_Click" Grid.Column="4" Height="19.96"/>
-        <Button x:Name="btnDeleteProvider" Content="Delete" HorizontalAlignment="Left" Margin="13.183,125,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteProvider_Click" Grid.Column="4" Height="19.96"/>
-        <ListView SelectedIndex="0" x:Name="categorylList" Margin="18.172,9.985,76.408,10.815" SelectionChanged="CategorySelectionChanged" Grid.Row="1">
 
+        <Button x:Name="btnEditProduct" Content="Edit" HorizontalAlignment="Left" Margin="659,80,0,0" VerticalAlignment="Top" Width="75" Click="btnEditProduct_Click"/>
+        <Button x:Name="btnDeleteProduct" Content="Delete" HorizontalAlignment="Left" Margin="659,120,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteProduct_Click"/>
+        <Button x:Name="btnEditProvider" Content="Edit" HorizontalAlignment="Left" Margin="1224,86,0,0" VerticalAlignment="Top" Width="76" Click="btnEditProvider_Click"/>
+        <Button x:Name="btnDeleteProvider" Content="Delete" HorizontalAlignment="Left" Margin="1224,126,0,0" VerticalAlignment="Top" Width="76" Click="btnDeleteProvider_Click"/>
+       
+        <ListView SelectedIndex="0" x:Name="categorylList" Height="144" Margin="10,216,1118,0" VerticalAlignment="Top" SelectionChanged="CategorySelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="213" Header="Category Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Category Name"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <ListView SelectedIndex="0" x:Name="subCategorylList" Margin="18.172,10,66.225,17.924" SelectionChanged="SubCategorySelectionChanged" Grid.Row="2" Grid.ColumnSpan="2">
-
+        
+        <ListView SelectedIndex="0" x:Name="subCategorylList" Height="104" Margin="10,380,887,0" VerticalAlignment="Top" SelectionChanged="SubCategorySelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Sub Category Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Kategooria.Nimi}" Width="210" Header="Category Name"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="15,33.297,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click" Grid.Row="2" Grid.Column="2" Height="19.96"/>
-        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="15,75.337,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click" Grid.Row="2" Grid.Column="2" Height="19.96"/>
-        <Button x:Name="btnEditCategory" Content="Edit" HorizontalAlignment="Left" Margin="15,37.034,0,0" VerticalAlignment="Top" Width="74" Click="btnEditCategory_Click" Grid.Row="1" Height="19.96" Grid.Column="1"/>
-        <Button x:Name="btnDeleteCategory" Content="Delete" HorizontalAlignment="Left" Margin="15,91.984,0,0" VerticalAlignment="Top" Width="74" Click="btnDeleteCategory_Click" Grid.Row="1" Height="19.96" Grid.Column="1"/>
-        <ListView SelectedIndex="0" x:Name="clientList" Margin="22.377,9.985,22.067,10.815" SelectionChanged="KleintSelectionChanged" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
+        
+        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="484,422,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click"/>
+        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="484,462,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click"/>
+        <Button x:Name="btnEditCategory" Content="Edit" HorizontalAlignment="Left" Margin="256,258,0,0" VerticalAlignment="Top" Width="74" Click="btnEditCategory_Click"/>
+        <Button x:Name="btnDeleteCategory" Content="Delete" HorizontalAlignment="Left" Margin="256,298,0,0" VerticalAlignment="Top" Width="74" Click="btnDeleteCategory_Click"/>
 
+        <ListView SelectedIndex="0" x:Name="clientList" Height="144" Margin="713,216,109,0" VerticalAlignment="Top" SelectionChanged="KleintSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="140" Header="F Name"/>
@@ -107,10 +95,10 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="180" Header="E mail"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <Button x:Name="btnEditKlient" Content="Edit" HorizontalAlignment="Left" Margin="20,51.984,0,0" VerticalAlignment="Top" Width="75" Click="btnEditKlient_Click" Grid.Row="1" Grid.Column="5" Height="19.96"/>
-        <Button x:Name="btnDeleteKlient" Content="Delete" HorizontalAlignment="Left" Margin="20,91.984,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteKlient_Click" Grid.Row="1" Grid.Column="5" Height="19.96"/>
+
+        <Button x:Name="btnEditKlient" Content="Edit" HorizontalAlignment="Left" Margin="1260,258,0,0" VerticalAlignment="Top" Width="75" Click="btnEditKlient_Click"/>
+        <Button x:Name="btnDeleteKlient" Content="Delete" HorizontalAlignment="Left" Margin="1260,298,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteKlient_Click"/>
 
     </Grid>
 </Window>

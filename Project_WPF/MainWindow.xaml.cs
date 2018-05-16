@@ -31,6 +31,7 @@ namespace Project_WPF
         {
             ControllForm cf = new ControllForm();
             cf.Show();
+            Controll.dateTime = DateTime.Now;
             this.Close();
 
         }

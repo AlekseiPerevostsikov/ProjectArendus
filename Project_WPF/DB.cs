@@ -67,7 +67,14 @@ namespace Project_WPF
         {
             return c.SisseTulebArvs.ToList();
         }
-               
+
+
+
+        public static List<SisseTulebArv> GetAllArrivedProductChecksWhereDate(DateTime date)
+        {
+            return c.SisseTulebArvs.Where(a=>a.Date>=date).ToList();
+        }
+
 
         public static List<Toode> GetAllProducts()
         {
@@ -316,6 +323,27 @@ namespace Project_WPF
         ///         Update
         /// 
         ///
+
+
+
+        public static int UpdateProductQuantity(int productId, int quantity)
+        {
+            int error = 0;
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Kogus += quantity;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+                error = 1;
+            }
+            catch
+            {
+                error = 0;
+            }
+            return error;
+        }
 
 
 
