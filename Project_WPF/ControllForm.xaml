@@ -71,17 +71,18 @@
             </ListView.View>
 
         </ListView>
-        <ListView SelectedIndex="0" x:Name="subCategorylList" Height="144" Margin="353,216,775,0" VerticalAlignment="Top" SelectionChanged="SubCategorySelectionChanged">
+        <ListView SelectedIndex="0" x:Name="subCategorylList" Height="104" Margin="10,380,887,0" VerticalAlignment="Top" SelectionChanged="SubCategorySelectionChanged">
 
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Sub Category Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kategooria.Nimi}" Width="210" Header="Category Name"/>
                 </GridView>
             </ListView.View>
 
         </ListView>
-        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="599,258,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click"/>
-        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="599,298,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click"/>
+        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="484,422,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click"/>
+        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="484,462,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click"/>
         <Button x:Name="btnEditCategory" Content="Edit" HorizontalAlignment="Left" Margin="256,258,0,0" VerticalAlignment="Top" Width="74" Click="btnEditCategory_Click"/>
         <Button x:Name="btnDeleteCategory" Content="Delete" HorizontalAlignment="Left" Margin="256,298,0,0" VerticalAlignment="Top" Width="74" Click="btnDeleteCategory_Click"/>
         <ListView SelectedIndex="0" x:Name="clientList" Height="144" Margin="713,216,109,0" VerticalAlignment="Top" SelectionChanged="KleintSelectionChanged">

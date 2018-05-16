@@ -380,7 +380,7 @@ namespace Project_WPF
                     Toode newProduct = new Toode();
                     newProduct.Nimi = txt1.Text;
                     newProduct.KoodToode = txt2.Text;
-                    newProduct.AlamKategoriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
+                    newProduct.AlamkategooriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
 
                     int error = DB.AddProduct(newProduct);
                     if (error != 0)
@@ -532,7 +532,7 @@ namespace Project_WPF
                     updateToode.ID = productId;
                     updateToode.Nimi = txt1.Text;
                     updateToode.KoodToode = txt2.Text;
-                    updateToode.AlamKategoriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
+                    updateToode.AlamkategooriaId = ((KeyValuePair<int, string>)cb5.SelectedItem).Key;
 
 
                     int error = DB.UpdateProduct(updateToode);

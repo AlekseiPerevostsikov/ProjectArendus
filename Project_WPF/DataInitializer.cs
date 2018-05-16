@@ -78,8 +78,8 @@ namespace Project_WPF
 
             var items = new List<Toode>
             {
-                new Toode{Nimi="Philips LCD Monitor 24'",Kogus= 10, KoodToode="T15487", AlamKategoriaId=6, Hind=250},
-                new Toode{Nimi="SteelSeries Rival100", Kogus= 50, KoodToode="T15418", AlamKategoriaId=2, Hind=35}
+                new Toode{Nimi="Philips LCD Monitor 24'",Kogus= 10, KoodToode="T15487", AlamkategooriaId=6, Hind=250},
+                new Toode{Nimi="SteelSeries Rival100", Kogus= 50, KoodToode="T15418", AlamkategooriaId=2, Hind=35}
             };
             items.ForEach(a => context.Toodes.Add(a));
             context.SaveChanges();
