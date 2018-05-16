@@ -73,6 +73,8 @@ namespace Project_WPF
                 providerItems.Add(i);
             }
             providerlList.ItemsSource = providerItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(providerlList.ItemsSource);
+            view.Filter = ProviderFilter;
         }
 
 
@@ -84,6 +86,8 @@ namespace Project_WPF
                 categoryItems.Add(i);
             }
             categorylList.ItemsSource = categoryItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(categorylList.ItemsSource);
+            view.Filter = CategoryFilter;
         }
 
 
@@ -95,6 +99,8 @@ namespace Project_WPF
                 subCategoryItems.Add(i);
             }
             subCategorylList.ItemsSource = subCategoryItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(subCategorylList.ItemsSource);
+            view.Filter = SubCategoryFiltr;
         }
 
 
@@ -106,6 +112,8 @@ namespace Project_WPF
                 klientItems.Add(i);
             }
             clientList.ItemsSource = klientItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(clientList.ItemsSource);
+            view.Filter = ClientFilter;
         }
 
 
@@ -552,6 +560,9 @@ namespace Project_WPF
             check.Show();
         }
 
+        /// <summary>
+        /// Search panel
+        /// </summary>
 
         private bool ProductFilter(object item)
         {
@@ -562,13 +573,69 @@ namespace Project_WPF
            
         }
 
+        private bool CategoryFilter(object item)
+        {
+            if (String.IsNullOrEmpty(categorysearch.Text))
+                return true;
+            else
+                return ((item as Kategooria).Nimi.IndexOf(categorysearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
+        }
+
+        private bool ProviderFilter(object item)
+        {
+            if (String.IsNullOrEmpty(providersearch.Text))
+                return true;
+            else
+                return ((item as Pakkuja).Nimi.IndexOf(providersearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private bool SubCategoryFiltr(object item)
+        {
+            if (String.IsNullOrEmpty(subcategorysearch.Text))
+                return true;
+            else
+                return ((item as Alamkategooria).Nimi.IndexOf(subcategorysearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        
+        private bool ClientFilter(object item)
+        {
+            if (String.IsNullOrEmpty(clientsearch.Text))
+                return true;
+            else
+                return ((item as Klient).Nimi.IndexOf(clientsearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        
         private void productsearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+        }
 
+        private void categorysearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(categorylList.ItemsSource).Refresh();
+        }
+
+        private void providersearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(providerlList.ItemsSource).Refresh();
+        }
+
+        private void subcategorysearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(subCategorylList.ItemsSource).Refresh();
+        }
+
+        private void clientsearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(clientList.ItemsSource).Refresh();
         }
     }
+    /// 
+    /// end Search Panel
+    /// 
+
+
 
     public static class Controll
     {

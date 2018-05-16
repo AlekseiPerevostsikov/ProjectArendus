@@ -61,6 +61,10 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view.Filter = ProductFilter;
+            CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view1.Filter = CategoryFilter;
         }
 
 
@@ -202,6 +206,38 @@ namespace Project_WPF
             }
         }
 
+        private bool ProductFilter(object item)
+        {
+
+            if (String.IsNullOrEmpty(txtProductName.Text))
+                return true;
+            else
+                return ((item as Toode).Nimi.IndexOf(txtProductName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+
+        }
+
+        private bool CategoryFilter(object item)
+        {
+
+            if (String.IsNullOrEmpty(txtSubCategoryName.Text))
+                return true;
+            else
+                return ((item as Alamkategooria).Nimi.IndexOf(txtSubCategoryName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+
+        }
+
         
+
+        private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+        }
+
+        private void txtSubCategoryName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+        }
     }
 }

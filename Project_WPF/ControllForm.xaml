@@ -115,16 +115,16 @@
         <Label Content="Products" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Height="25.96" Width="56.483"/>
         <Label Content="Search:" Grid.Column="1" Margin="0,24,12.689,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51.327" Height="25.96"/>
         <TextBox x:Name="productsearch" Grid.Column="2" Height="23" Margin="0,26.96,122.724,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" TextChanged="productsearch_TextChanged"/>
-        <TextBox Height="23" Margin="0,6.822,12.569,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
+        <TextBox x:Name="categorysearch" Height="23" Margin="0,6.822,12.569,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" TextChanged="categorysearch_TextChanged"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,3.862,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957"/>
         <Label Content="Search:" Margin="0,3.862,132.569,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96"/>
-        <TextBox Height="23" Margin="0,6.822,8.704,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="providersearch" Height="23" Margin="0,6.822,8.704,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="2" TextChanged="providersearch_TextChanged"/>
         <Label Content="Provider" HorizontalAlignment="Left" Margin="3.147,3.862,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957" Grid.Column="2"/>
         <Label Content="Search:" Margin="0,3.862,128.704,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="2"/>
-        <TextBox Height="23" Margin="0,12.06,7,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5"/>
-        <Label Content="Category" HorizontalAlignment="Left" Margin="11.897,6.822,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="clientsearch" Height="23" Margin="0,12.06,7,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5" TextChanged="clientsearch_TextChanged"/>
+        <Label Content="Client" HorizontalAlignment="Left" Margin="11.897,6.822,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957" Grid.Column="4" Grid.ColumnSpan="2"/>
         <Label Content="Search:" Margin="0,10,127,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="5"/>
-        <TextBox Height="23" Margin="0,24.96,7,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5"/>
+        <TextBox x:Name="subcategorysearch" Height="23" Margin="0,24.96,7,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5" TextChanged="subcategorysearch_TextChanged"/>
         <Label Content="Sub Category" HorizontalAlignment="Left" Margin="11,24.06,0,0" VerticalAlignment="Top" Height="25.96" Width="81.624" Grid.Column="5"/>
         <Label Content="Search:" Margin="0,22,127,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="5"/>
 
