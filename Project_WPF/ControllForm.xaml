@@ -7,9 +7,22 @@
         mc:Ignorable="d"
         Title="Controll Form" Height="553.364" Width="1360.2" WindowState="Maximized" Activated="FormActivated">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="253*"/>
+            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="255*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="58*"/>
+            <ColumnDefinition Width="473*"/>
+            <ColumnDefinition Width="121*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="257*"/>
+            <RowDefinition Height="265*"/>
+        </Grid.RowDefinitions>
 
 
-        <Menu Height="22" VerticalAlignment="Top" >
+        <Menu Height="22" VerticalAlignment="Top" Grid.ColumnSpan="7" >
             <MenuItem Header="File">
                 <MenuItem Header="something" ></MenuItem>
 
@@ -36,12 +49,12 @@
             <MenuItem Header="Show Products" Click="MenuItem_ShowProducts"></MenuItem>
             <MenuItem Header="Checks" Click="MenuItem_ShowChecks"></MenuItem>
         </Menu>
-        
-        
-        <Button Content="Disable" HorizontalAlignment="Left" Margin="8,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
-        <Button Content="Enable" HorizontalAlignment="Left" Margin="158,27,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_1"/>
-        
-        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,54,721,0" VerticalAlignment="Top" SelectionChanged="ProductSelectionChanged">
+
+
+        <Button Content="Disable" Margin="0,27,0.792,0" VerticalAlignment="Top" Click="Button_Click" Height="19.96" Grid.Column="2" HorizontalAlignment="Right" Width="76"/>
+        <Button Content="Enable" Margin="0,27,5.142,0" VerticalAlignment="Top" Click="Button_Click_1" Height="19.96" Grid.Column="3" HorizontalAlignment="Right" Width="76"/>
+
+        <ListView SelectedIndex="0" x:Name="productlList" Margin="10,54,68.808,9.179" SelectionChanged="ProductSelectionChanged" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
@@ -51,8 +64,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <ListView SelectedIndex="0" x:Name="providerlList" Height="144" Margin="932,54,152,0" VerticalAlignment="Top" SelectionChanged="ProviderSelectionChanged">
+
+        <ListView SelectedIndex="0" x:Name="providerlList" Margin="19.5,40.06,8.704,10.125" SelectionChanged="ProviderSelectionChanged" Grid.Row="1" Grid.Column="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Provider Name"/>
@@ -60,20 +73,20 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="btnEditProduct" Content="Edit" HorizontalAlignment="Left" Margin="659,80,0,0" VerticalAlignment="Top" Width="75" Click="btnEditProduct_Click"/>
-        <Button x:Name="btnDeleteProduct" Content="Delete" HorizontalAlignment="Left" Margin="659,120,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteProduct_Click"/>
-        <Button x:Name="btnEditProvider" Content="Edit" HorizontalAlignment="Left" Margin="1224,86,0,0" VerticalAlignment="Top" Width="76" Click="btnEditProvider_Click"/>
-        <Button x:Name="btnDeleteProvider" Content="Delete" HorizontalAlignment="Left" Margin="1224,126,0,0" VerticalAlignment="Top" Width="76" Click="btnDeleteProvider_Click"/>
-       
-        <ListView SelectedIndex="0" x:Name="categorylList" Height="144" Margin="10,216,1118,0" VerticalAlignment="Top" SelectionChanged="CategorySelectionChanged">
+        <Button x:Name="btnEditProduct" Content="Edit" Margin="0,80,23.016,0" VerticalAlignment="Top" Click="btnEditProduct_Click" Height="19.96" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="btnDeleteProduct" Content="Delete" Margin="0,120,23.016,0" VerticalAlignment="Top" Click="btnDeleteProduct_Click" Height="19.96" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="btnEditProvider" Content="Edit" HorizontalAlignment="Left" Margin="21,67.07,0,0" VerticalAlignment="Top" Width="76" Click="btnEditProvider_Click" Grid.Row="1" Height="19.96" Grid.Column="3"/>
+        <Button x:Name="btnDeleteProvider" Content="Delete" HorizontalAlignment="Left" Margin="21,107.07,0,0" VerticalAlignment="Top" Width="76" Click="btnDeleteProvider_Click" Grid.Row="1" Height="19.96" Grid.Column="3"/>
+
+        <ListView SelectedIndex="0" x:Name="categorylList" Margin="10,40.06,12.569,10.125" SelectionChanged="CategorySelectionChanged" Grid.Row="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Category Name"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <ListView SelectedIndex="0" x:Name="subCategorylList" Height="104" Margin="10,380,887,0" VerticalAlignment="Top" SelectionChanged="SubCategorySelectionChanged">
+
+        <ListView SelectedIndex="0" x:Name="subCategorylList" Margin="11,54,7,9.179" SelectionChanged="SubCategorySelectionChanged" Grid.Column="5">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Sub Category Name"/>
@@ -81,13 +94,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="484,422,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click"/>
-        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="484,462,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click"/>
-        <Button x:Name="btnEditCategory" Content="Edit" HorizontalAlignment="Left" Margin="256,258,0,0" VerticalAlignment="Top" Width="74" Click="btnEditCategory_Click"/>
-        <Button x:Name="btnDeleteCategory" Content="Delete" HorizontalAlignment="Left" Margin="256,298,0,0" VerticalAlignment="Top" Width="74" Click="btnDeleteCategory_Click"/>
 
-        <ListView SelectedIndex="0" x:Name="clientList" Height="144" Margin="713,216,109,0" VerticalAlignment="Top" SelectionChanged="KleintSelectionChanged">
+        <Button x:Name="btnEditSubCategory" Content="Edit" HorizontalAlignment="Left" Margin="29.312,80,0,0" VerticalAlignment="Top" Width="75" Click="btnEditSubCategory_Click" Height="19.96" Grid.Column="6"/>
+        <Button x:Name="btnDeleteSubCategory" Content="Delete" HorizontalAlignment="Left" Margin="29.312,120,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteSubCategory_Click" Height="19.96" Grid.Column="6"/>
+        <Button x:Name="btnEditCategory" Content="Edit" HorizontalAlignment="Left" Margin="9,62.06,0,0" VerticalAlignment="Top" Width="74" Click="btnEditCategory_Click" Grid.Row="1" Height="19.96" Grid.Column="1"/>
+        <Button x:Name="btnDeleteCategory" Content="Delete" HorizontalAlignment="Left" Margin="9,102.06,0,0" VerticalAlignment="Top" Width="74" Click="btnDeleteCategory_Click" Grid.Row="1" Height="19.96" Grid.Column="1"/>
+
+        <ListView SelectedIndex="0" x:Name="clientList" Margin="11.897,40.06,7,10.125" SelectionChanged="KleintSelectionChanged" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="140" Header="F Name"/>
@@ -97,8 +110,23 @@
             </ListView.View>
         </ListView>
 
-        <Button x:Name="btnEditKlient" Content="Edit" HorizontalAlignment="Left" Margin="1260,258,0,0" VerticalAlignment="Top" Width="75" Click="btnEditKlient_Click"/>
-        <Button x:Name="btnDeleteKlient" Content="Delete" HorizontalAlignment="Left" Margin="1260,298,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteKlient_Click"/>
+        <Button x:Name="btnEditKlient" Content="Edit" HorizontalAlignment="Left" Margin="29.312,57.05,0,0" VerticalAlignment="Top" Width="75" Click="btnEditKlient_Click" Grid.Row="1" Height="19.96" Grid.Column="6"/>
+        <Button x:Name="btnDeleteKlient" Content="Delete" HorizontalAlignment="Left" Margin="29.312,97.05,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteKlient_Click" Grid.Row="1" Height="19.96" Grid.Column="6"/>
+        <Label Content="Products" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Height="25.96" Width="56.483"/>
+        <Label Content="Search:" Grid.Column="1" Margin="0,24,12.689,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51.327" Height="25.96"/>
+        <TextBox Grid.Column="2" Height="23" Margin="0,26.96,122.724,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
+        <TextBox Height="23" Margin="0,6.822,12.569,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="10,3.862,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957"/>
+        <Label Content="Search:" Margin="0,3.862,132.569,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96"/>
+        <TextBox Height="23" Margin="0,6.822,8.704,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="2"/>
+        <Label Content="Provider" HorizontalAlignment="Left" Margin="3.147,3.862,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957" Grid.Column="2"/>
+        <Label Content="Search:" Margin="0,3.862,128.704,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="2"/>
+        <TextBox Height="23" Margin="0,12.06,7,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5"/>
+        <Label Content="Category" HorizontalAlignment="Left" Margin="11.897,6.822,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <Label Content="Search:" Margin="0,10,127,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="5"/>
+        <TextBox Height="23" Margin="0,24.96,7,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" Grid.Column="5"/>
+        <Label Content="Sub Category" HorizontalAlignment="Left" Margin="11,24.06,0,0" VerticalAlignment="Top" Height="25.96" Width="81.624" Grid.Column="5"/>
+        <Label Content="Search:" Margin="0,22,127,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96" Grid.Column="5"/>
 
     </Grid>
 </Window>
