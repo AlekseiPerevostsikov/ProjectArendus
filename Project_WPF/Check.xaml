@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="Check" Height="552.024" Width="1176.263" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView SelectedIndex="0" x:Name="checklList" Height="331" Margin="0,86,71,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView SelectedIndex="0" x:Name="checklList" Margin="0,78.58,0,0" RenderTransformOrigin="0.494,0.667" Grid.Row="1">
 
             <ListView.View>
                 <GridView>
@@ -25,15 +29,15 @@
             </ListView.View>
 
         </ListView>
-        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="93,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Search: " HorizontalAlignment="Left" Margin="21,41,0,0" VerticalAlignment="Top" Width="58" Height="36"/>
-        <Label Content="Product Name" HorizontalAlignment="Left" Margin="92,10,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSubCategoryName" HorizontalAlignment="Left" Height="23" Margin="256,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Sub Category Name" HorizontalAlignment="Left" Margin="255,10,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Height="23" Margin="426,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Category Name" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtClientLastName" HorizontalAlignment="Left" Height="23" Margin="572,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Client Last Name" HorizontalAlignment="Left" Margin="571,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="93,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Label Content="Search: " HorizontalAlignment="Left" Margin="21,41,0,0" VerticalAlignment="Top" Width="58" Height="23" Grid.Row="1"/>
+        <Label Content="Product Name" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="25.96"/>
+        <TextBox x:Name="txtSubCategoryName" HorizontalAlignment="Left" Height="23" Margin="255,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Label Content="Sub Category Name" HorizontalAlignment="Left" Margin="255,10,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="25.96"/>
+        <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Height="23" Margin="426,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Label Content="Category Name" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="25.96"/>
+        <TextBox x:Name="txtClientLastName" HorizontalAlignment="Left" Height="23" Margin="572,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
+        <Label Content="Client Last Name" HorizontalAlignment="Left" Margin="571,10,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="25.96"/>
 
     </Grid>
 </Window>
