@@ -8,7 +8,7 @@
         Title="Arrived Products" Height="692" Width="1227" WindowStartupLocation="CenterScreen" Activated="FormActivated" Loaded="FormLoaded">
     <Grid>
 
-        <ListView SelectedIndex="0" x:Name="ArrivedProductChecklList" Height="336" Margin="10,260,367,0" VerticalAlignment="Top" SelectionChanged="ArrivedProductCheckSelectionCHanged">
+        <ListView SelectedIndex="0" x:Name="ArrivedProductChecklList" Height="336" Margin="10,260,295,0" VerticalAlignment="Top" SelectionChanged="ArrivedProductCheckSelectionCHanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.KoodToode}" Width="70" Header="Code"/>
@@ -16,7 +16,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Kogus}" Width="60" Header="Quantity"/>
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Alamkategooria.Nimi}" Width="150" Header="Sub category"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Pakkuja.Nimi}" Width="200" Header="Provider"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="100" Header="Date"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="160" Header="Date"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -41,8 +41,8 @@
         <Label Content="Search: " HorizontalAlignment="Left" Margin="331,25,0,0" VerticalAlignment="Top" Width="57"/>
         <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="640,56,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Product quantity" HorizontalAlignment="Left" Margin="640,25,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="884,324,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirm_Click"/>
-        <Button x:Name="btnDeleteTempProduct" Content="Delete temp data" HorizontalAlignment="Left" Margin="884,391,0,0" VerticalAlignment="Top" Width="136" Click="btnDeleteTempProduct_Click"/>
+        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="944,324,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirm_Click"/>
+        <Button x:Name="btnDeleteTempProduct" Content="Delete temp data" HorizontalAlignment="Left" Margin="944,391,0,0" VerticalAlignment="Top" Width="136" Click="btnDeleteTempProduct_Click"/>
         <Button x:Name="btnAddNewProduct" Content="New Product" HorizontalAlignment="Left" Margin="640,178,0,0" VerticalAlignment="Top" Width="88" Click="btnAddNewProduct_Click"/>
 
         <ListView SelectedIndex="0" x:Name="providerlList" Height="144" Margin="945,56,38,0" VerticalAlignment="Top" SelectionChanged="ProviderSelectionCHanged">

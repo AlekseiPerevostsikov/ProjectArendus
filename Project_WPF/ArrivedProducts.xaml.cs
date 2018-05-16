@@ -24,6 +24,7 @@ namespace Project_WPF
         Toode ProductControllStatuss;
         Pakkuja ProviderControllStatuss;
         SisseTulebArv ArrivedProductCheckControllStatuss;
+        ObservableCollection<SisseTulebArv> arrivedProductCheckItems;
 
         // int productId;
 
@@ -130,8 +131,8 @@ namespace Project_WPF
 
         public void LoadArrivedProductCheckData()
         {
-            ObservableCollection<SisseTulebArv> arrivedProductCheckItems = new ObservableCollection<SisseTulebArv>();
-            foreach (SisseTulebArv i in DB.GetAllArrivedProductChecks().OrderBy(a => a.SisseTuleb.Toode.Nimi))
+            arrivedProductCheckItems = new ObservableCollection<SisseTulebArv>();
+            foreach (SisseTulebArv i in DB.GetAllArrivedProductChecksWhereDate(Controll.dateTime).OrderBy(a => a.SisseTuleb.Toode.Nimi))
             {
                 arrivedProductCheckItems.Add(i);
             }
@@ -177,12 +178,39 @@ namespace Project_WPF
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            if (ArrivedProductChecklList.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("Confirm temp products?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                {
+                }
+                else
+                {
+                    try
+                    {
+                        foreach (var i in arrivedProductCheckItems)
+                        {
+                            DB.UpdateProductQuantity(i.SisseTuleb.Toode.ID, i.SisseTuleb.Kogus);
+                        }
+                        Controll.dateTime = DateTime.Now;
+                        arrivedProductCheckItems.Clear();
+                        LoadProductData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error " + ex.ToString() + "!", "Error");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Arrived product check is empty!", "Error");
+            }
 
         }
 
         private void btnDeleteTempProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (ArrivedProductChecklList.SelectedIndex>=0)
+            if (ArrivedProductChecklList.SelectedIndex >= 0)
             {
                 if (MessageBox.Show("Delete temp data?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                 {
@@ -211,6 +239,6 @@ namespace Project_WPF
             }
         }
 
-       
+
     }
 }

@@ -98,7 +98,7 @@ namespace Project_WPF
 
             var checks = new List<SisseTulebArv>
             {
-               new SisseTulebArv{Date = DateTime.Now, PakkujaId = 1 , SisseTulebId=1 },
+               new SisseTulebArv{Date = DateTime.Now, PakkujaId = 1 , SisseTulebId=1, },
                new SisseTulebArv{Date = DateTime.Now, PakkujaId = 1 , SisseTulebId=2 }
             };
 
