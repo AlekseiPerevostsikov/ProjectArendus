@@ -5,54 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF"
         mc:Ignorable="d"
-        Title="Arrived Products" Height="692" Width="1008" WindowStartupLocation="CenterScreen" Activated="FormActivated" Loaded="FormLoaded">
+        Title="Arrived Products" Height="692" Width="1227" WindowStartupLocation="CenterScreen" Activated="FormActivated" Loaded="FormLoaded">
     <Grid>
-        <ListView SelectedIndex="0" x:Name="ArrivedProductlList" Height="336" Margin="10,260,200,0" VerticalAlignment="Top">
 
+        <ListView SelectedIndex="0" x:Name="ArrivedProductChecklList" Height="336" Margin="10,260,367,0" VerticalAlignment="Top" SelectionChanged="ArrivedProductCheckSelectionCHanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Provider"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.KoodToode}" Width="70" Header="Code"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Kogus}" Width="60" Header="Quantity"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Alamkategooria.Nimi}" Width="150" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Pakkuja.Nimi}" Width="200" Header="Provider"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="100" Header="Date"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <Button x:Name="btnAddToTemp" Content="Add to temp" HorizontalAlignment="Left" Margin="868,209,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Temporary data" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-0.025,0.718"/>
-        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,56,478,0" VerticalAlignment="Top" SelectionChanged="ProductSelectionChanged">
 
+        <Button x:Name="btnAddToTemp" Content="Add to temp" HorizontalAlignment="Left" Margin="795,178,0,0" VerticalAlignment="Top" Width="100" Click="btnAddToTemp_Click"/>
+        <Label Content="Temporary data" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-0.025,0.718"/>
+
+        <ListView SelectedIndex="0" x:Name="productlList" Height="144" Margin="10,56,601,0" VerticalAlignment="Top" SelectionChanged="ProductSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="100" Header="Quantity"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
+
         <Label x:Name="lbl" Content="Product" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" Width="244"/>
-        <Label Content="Provider" HorizontalAlignment="Left" Margin="699,25,0,0" VerticalAlignment="Top" Width="58"/>
+        <Label Content="Provider" HorizontalAlignment="Left" Margin="945,25,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="3.466,0.308"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="402,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="331,25,0,0" VerticalAlignment="Top" Width="57"/>
-        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="541,56,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Product quantity" HorizontalAlignment="Left" Margin="541,25,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="820,324,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnDeleteTempProduct" Content="Delete temp data" HorizontalAlignment="Left" Margin="820,391,0,0" VerticalAlignment="Top" Width="136"/>
-        <Button x:Name="btnAddNewProduct" Content="New Product" HorizontalAlignment="Left" Margin="541,130,0,0" VerticalAlignment="Top" Width="88" Click="btnAddNewProduct_Click"/>
-        <ListView SelectedIndex="0" x:Name="providerlList" Height="144" Margin="699,56,32,0" VerticalAlignment="Top">
+        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="640,56,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Product quantity" HorizontalAlignment="Left" Margin="640,25,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="884,324,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirm_Click"/>
+        <Button x:Name="btnDeleteTempProduct" Content="Delete temp data" HorizontalAlignment="Left" Margin="884,391,0,0" VerticalAlignment="Top" Width="136" Click="btnDeleteTempProduct_Click"/>
+        <Button x:Name="btnAddNewProduct" Content="New Product" HorizontalAlignment="Left" Margin="640,178,0,0" VerticalAlignment="Top" Width="88" Click="btnAddNewProduct_Click"/>
 
+        <ListView SelectedIndex="0" x:Name="providerlList" Height="144" Margin="945,56,38,0" VerticalAlignment="Top" SelectionChanged="ProviderSelectionCHanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Provider Name"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
-        <TextBox x:Name="txtProviderName" HorizontalAlignment="Left" Height="23" Margin="882,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
-        <Label Content="Search: " HorizontalAlignment="Left" Margin="820,25,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="1.123,0.5"/>
+
+        <TextBox x:Name="txtProviderName" HorizontalAlignment="Left" Height="23" Margin="1095,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"/>
+        <Label Content="Search: " HorizontalAlignment="Left" Margin="1033,25,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="1.123,0.5"/>
 
     </Grid>
 </Window>
