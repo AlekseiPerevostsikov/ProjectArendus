@@ -5,27 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF"
         mc:Ignorable="d"
-        Title="Buy Product" Height="662.5" Width="1135.931" WindowStartupLocation="CenterScreen">
+        Title="Buy Product" Height="662.5" Width="1135.931" WindowStartupLocation="CenterScreen" Loaded="FormLoaded" Activated="FormActivated">
     <Grid>
-        <ListView SelectedIndex="0" x:Name="productlList" Height="190" Margin="0,74,281,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667">
-
+        <ListView SelectedIndex="0" x:Name="productlList" Height="190" Margin="0,74,341,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667" SelectionChanged="ProductSelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="70" Header="Price"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Hind}" Width="70" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="60" Header="Quantity"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Kategooria.Nimi}" Width="200" Header="Category"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
+
         <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="890,107,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Product quantity" HorizontalAlignment="Left" Margin="890,74,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="890,173,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="890,173,0,0" VerticalAlignment="Top" Width="120" Click="btnAddToBasket_Click"/>
         <Label Content="Product " HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Product Basket" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListView SelectedIndex="0" x:Name="basketList" Height="190" Margin="0,342,281,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667">
+        <ListView SelectedIndex="0" x:Name="basketList" Height="190" Margin="0,342,281,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.667" SelectionChanged="BasketSelectionChanged">
 
             <ListView.View>
                 <GridView>
@@ -44,8 +43,8 @@
         <Label Content="Search: " HorizontalAlignment="Left" Margin="164,43,0,0" VerticalAlignment="Top" Width="58"/>
         <TextBox x:Name="txtProductNameInBasket" HorizontalAlignment="Left" Height="23" Margin="235,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="164,311,0,0" VerticalAlignment="Top" Width="57"/>
-        <Button x:Name="btnDeleteFromBasket" Content="Delete Product" HorizontalAlignment="Left" Margin="890,446,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnConfirmBasket" Content="Confirm basket" HorizontalAlignment="Left" Margin="890,498,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnDeleteFromBasket" Content="Delete Product" HorizontalAlignment="Left" Margin="890,446,0,0" VerticalAlignment="Top" Width="120" Click="btnDeleteFromBasket_Click"/>
+        <Button x:Name="btnConfirmBasket" Content="Confirm basket" HorizontalAlignment="Left" Margin="890,498,0,0" VerticalAlignment="Top" Width="120" Click="btnConfirmBasket_Click"/>
         <Label Content="Product Name" HorizontalAlignment="Left" Margin="235,12,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSubCategoryName" HorizontalAlignment="Left" Height="23" Margin="399,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Sub Category Name" HorizontalAlignment="Left" Margin="398,12,0,0" VerticalAlignment="Top" Width="120"/>
@@ -55,7 +54,6 @@
         <Label Content="Change Product quantity" HorizontalAlignment="Left" Margin="890,342,0,0" VerticalAlignment="Top" Width="150"/>
         <ComboBox x:Name="cbClient" HorizontalAlignment="Left" Margin="890,43,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Client" HorizontalAlignment="Left" Margin="890,12,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="?" HorizontalAlignment="Left" Margin="376,498,0,0" VerticalAlignment="Top" Height="95" Width="99" FontSize="72"/>
 
     </Grid>
 </Window>

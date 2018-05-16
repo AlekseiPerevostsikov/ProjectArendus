@@ -560,6 +560,7 @@ namespace Project_WPF
         public static int CategoryId { get; set; }
         public static int SubCategoryId { get; set; }
         public static int ClientId { get; set; }
-        public static DateTime dateTime { get; set; }
+        public static DateTime dateTimeArrivedProduct { get; set; }
+        public static DateTime dateTimeBuyProduct { get; set; }
     }
 }

@@ -75,6 +75,11 @@ namespace Project_WPF
             return c.SisseTulebArvs.Where(a=>a.Date>=date).ToList();
         }
 
+        public static List<Ostukorvi> GetAllBasketsWhereDate(DateTime date)
+        {
+            return c.Ostukorvis.Where(a => a. >= date).ToList();
+        }
+
 
         public static List<Toode> GetAllProducts()
         {

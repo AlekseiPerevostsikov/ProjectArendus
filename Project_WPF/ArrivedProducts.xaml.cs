@@ -66,33 +66,33 @@ namespace Project_WPF
         {
             if (productlList.SelectedIndex >= 0 && providerlList.SelectedIndex >= 0)
             {
-                //try
-                //{
-                SisseTulebArv temp = new SisseTulebArv();
-                temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
-                //.Toode.ID = ProductControllStatuss.ID;
-                //temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
-                //temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
-                //temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
-                temp.Pakkuja = ProviderControllStatuss;
-
-                //temp.Hind = 10;
-                temp.Date = DateTime.Now;
-
-                int error = DB.AddArrivedProductCheck(temp);
-                if (error != 0)
+                try
                 {
-                    MessageBox.Show("Was Added!", "Succesful");
+                    SisseTulebArv temp = new SisseTulebArv();
+                    temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
+                    //.Toode.ID = ProductControllStatuss.ID;
+                    //temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
+                    //temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
+                    //temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
+                    temp.Pakkuja = ProviderControllStatuss;
+
+                    //temp.Hind = 10;
+                    temp.Date = DateTime.Now;
+
+                    int error = DB.AddArrivedProductCheck(temp);
+                    if (error != 0)
+                    {
+                        MessageBox.Show("Was Added!", "Succesful");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error while adding!", "Error");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error while adding!", "Error");
+                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
                 }
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
-                //}
             }
             else
             {
@@ -132,7 +132,7 @@ namespace Project_WPF
         public void LoadArrivedProductCheckData()
         {
             arrivedProductCheckItems = new ObservableCollection<SisseTulebArv>();
-            foreach (SisseTulebArv i in DB.GetAllArrivedProductChecksWhereDate(Controll.dateTime).OrderBy(a => a.SisseTuleb.Toode.Nimi))
+            foreach (SisseTulebArv i in DB.GetAllArrivedProductChecksWhereDate(Controll.dateTimeArrivedProduct).OrderBy(a => a.SisseTuleb.Toode.Nimi))
             {
                 arrivedProductCheckItems.Add(i);
             }
@@ -191,7 +191,7 @@ namespace Project_WPF
                         {
                             DB.UpdateProductQuantity(i.SisseTuleb.Toode.ID, i.SisseTuleb.Kogus);
                         }
-                        Controll.dateTime = DateTime.Now;
+                        Controll.dateTimeArrivedProduct = DateTime.Now;
                         arrivedProductCheckItems.Clear();
                         LoadProductData();
                     }
