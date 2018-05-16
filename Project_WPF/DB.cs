@@ -77,7 +77,7 @@ namespace Project_WPF
 
         public static List<Ostukorvi> GetAllBasketsWhereDate(DateTime date)
         {
-            return c.Ostukorvis.Where(a => a. >= date).ToList();
+            return c.Ostukorvis.Where(a => a. ID>= 5).ToList();
         }
 
 
