@@ -10,7 +10,7 @@ namespace LaduDB
     public class Kategooria
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
+        public int ID { get; set; }
         public String Nimi { get; set; }
 
 

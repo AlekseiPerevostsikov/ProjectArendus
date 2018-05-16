@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project_WPF
 {
-    class DB
+     public class DB
     {
         static Context c = new Context();
 
@@ -20,7 +20,7 @@ namespace Project_WPF
         ///
 
 
-
+            
         public static List<Alamkategooria> GetAllSubCategory()
         {
             return c.Alamkategoorias.ToList();
@@ -33,7 +33,7 @@ namespace Project_WPF
         }
 
 
-        public static List<Kategooria> GetAllCategorys()
+        public static List<Kategooria> GetAllCategory()
         {
             return c.Kategoorias.ToList();
         }
@@ -67,12 +67,83 @@ namespace Project_WPF
         {
             return c.SisseTulebArvs.ToList();
         }
-
+               
 
         public static List<Toode> GetAllProducts()
         {
             return c.Toodes.ToList();
         }
+
+
+
+
+
+
+        ///
+        ///         Find klass by Id
+        ///
+        ///
+
+
+
+        public static Alamkategooria GetSubCategoryBySubCategoryId(int subCategoryId)
+        {
+            return c.Alamkategoorias.Where(a => a.ID == subCategoryId).First();
+        }
+
+
+        public static Arve GetCheckByCheckId(int checkId)
+        {
+            return c.Arves.Where(a => a.ID == checkId).First();
+        }
+
+
+        public static Kategooria GetCategoryByCategoryId(int categoryId)
+        {
+            return c.Kategoorias.Where(a => a.ID == categoryId).First();
+        }
+
+
+        public static Klient GetClientByClientId(int clientId)
+        {
+            return c.Klients.Where(a => a.ID == clientId).First();
+        }
+
+
+        public static Ostukorvi GetBasketByBasketId(int basketId)
+        {
+            return c.Ostukorvis.Where(a => a.ID == basketId).First();
+        }
+
+
+        public static Pakkuja GetProviderByProviderId(int providerId)
+        {
+            return c.Pakkujas.Where(a => a.ID == providerId).First();
+        }
+
+
+        public static SisseTuleb GetArrivedProductByArrivedProductId(int arrivedProductId)
+        {
+            return c.SisseTulebs.Where(a => a.ID == arrivedProductId).First();
+        }
+
+
+        public static SisseTulebArv GetArrivedProductCheckByArrivedProductCheckId(int arrivedProductCheckId)
+        {
+            return c.SisseTulebArvs.Where(a => a.ID == arrivedProductCheckId).First();
+        }
+
+
+        public static Toode GetProductByProductId(int productId)
+        {
+            return c.Toodes.Where(a => a.ID == productId).First();
+        }
+
+
+
+
+
+
 
 
 
@@ -271,7 +342,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(check.ID);
+                var original = c.Arves.Find(check.ID);
                 c.Entry(original).CurrentValues.SetValues(check);
                 c.SaveChanges();
                 error = 1;
@@ -289,7 +360,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(category.ID);
+                var original = c.Kategoorias.Find(category.ID);
                 c.Entry(original).CurrentValues.SetValues(category);
                 c.SaveChanges();
                 error = 1;
@@ -302,12 +373,12 @@ namespace Project_WPF
         }
 
 
-        public static int UpdateKlient(Klient klient)
+        public static int UpdateClient(Klient klient)
         {
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(klient.ID);
+                var original = c.Klients.Find(klient.ID);
                 c.Entry(original).CurrentValues.SetValues(klient);
                 c.SaveChanges();
                 error = 1;
@@ -325,7 +396,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(basket.ID);
+                var original = c.Ostukorvis.Find(basket.ID);
                 c.Entry(original).CurrentValues.SetValues(basket);
                 c.SaveChanges();
                 error = 1;
@@ -343,7 +414,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(provider.ID);
+                var original = c.Pakkujas.Find(provider.ID);
                 c.Entry(original).CurrentValues.SetValues(provider);
                 c.SaveChanges();
                 error = 1;
@@ -361,7 +432,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(arrivedProduct.ID);
+                var original = c.SisseTulebs.Find(arrivedProduct.ID);
                 c.Entry(original).CurrentValues.SetValues(arrivedProduct);
                 c.SaveChanges();
                 error = 1;
@@ -379,7 +450,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(arrivedProductCheck.ID);
+                var original = c.SisseTulebArvs.Find(arrivedProductCheck.ID);
                 c.Entry(original).CurrentValues.SetValues(arrivedProductCheck);
                 c.SaveChanges();
                 error = 1;
@@ -397,7 +468,7 @@ namespace Project_WPF
             int error = 0;
             try
             {
-                var original = c.Alamkategoorias.Find(product.ID);
+                var original = c.Toodes.Find(product.ID);
                 c.Entry(original).CurrentValues.SetValues(product);
                 c.SaveChanges();
                 error = 1;
@@ -472,7 +543,7 @@ namespace Project_WPF
         }
 
 
-        public static int DeleteKlient(Klient klient)
+        public static int DeleteClient(Klient klient)
         {
             int error = 0;
             try

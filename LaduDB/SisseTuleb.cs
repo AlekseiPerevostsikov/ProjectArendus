@@ -10,8 +10,8 @@ namespace LaduDB
     public class SisseTuleb
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
-        public long toodeFK { get; set; }
+        public int ID { get; set; }
+        public int toodeId { get; set; }
         public double Hind { get; set; }
         public int Kogus { get; set; }
 

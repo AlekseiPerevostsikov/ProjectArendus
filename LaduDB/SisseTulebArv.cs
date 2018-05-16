@@ -10,10 +10,10 @@ namespace LaduDB
     public class SisseTulebArv
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
-        public long SisseTulebFK { get; set; }
+        public int ID { get; set; }
+        public int SisseTulebId { get; set; }
         public DateTime Date { get; set; }
-        public long PakkujaFK { get; set; }
+        public int PakkujaId { get; set; }
 
 
         public virtual SisseTuleb SisseTuleb { get; set; }

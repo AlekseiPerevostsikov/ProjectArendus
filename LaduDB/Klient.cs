@@ -10,7 +10,7 @@ namespace LaduDB
     public class Klient
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
+        public int ID { get; set; }
         public String Nimi { get; set; }
         public String Perekonnanimi { get; set; }
         public String Telefon { get; set; }

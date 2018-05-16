@@ -10,9 +10,9 @@ namespace LaduDB
     public class Ostukorvi
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ID { get; set; }
-        public long KlientFK { get; set; }
-        public long ToodeFK { get; set; }
+        public int ID { get; set; }
+        public int KlientId { get; set; }
+        public int ToodeId { get; set; }
         public int Kogus { get; set; }
 
         

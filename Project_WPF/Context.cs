@@ -9,7 +9,7 @@ using LaduDB;
 
 namespace Project_WPF
 {
-    class Context : DbContext
+    public class Context : DbContext
     {
         public Context(string connectionName)
             : base(connectionName)
