@@ -86,7 +86,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView SelectedIndex="0" x:Name="subCategorylList" Margin="11,54,7,9.179" SelectionChanged="SubCategorySelectionChanged" Grid.Column="5">
+        <ListView SelectedIndex="0" x:Name="subCategorylList" Margin="11,50.02,7,9.179" SelectionChanged="SubCategorySelectionChanged" Grid.Column="5">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Sub Category Name"/>
@@ -114,7 +114,7 @@
         <Button x:Name="btnDeleteKlient" Content="Delete" HorizontalAlignment="Left" Margin="29.312,97.05,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteKlient_Click" Grid.Row="1" Height="19.96" Grid.Column="6"/>
         <Label Content="Products" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Height="25.96" Width="56.483"/>
         <Label Content="Search:" Grid.Column="1" Margin="0,24,12.689,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="51.327" Height="25.96"/>
-        <TextBox Grid.Column="2" Height="23" Margin="0,26.96,122.724,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
+        <TextBox x:Name="productsearch" Grid.Column="2" Height="23" Margin="0,26.96,122.724,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" TextChanged="productsearch_TextChanged"/>
         <TextBox Height="23" Margin="0,6.822,12.569,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120"/>
         <Label Content="Category" HorizontalAlignment="Left" Margin="10,3.862,0,0" Grid.Row="1" VerticalAlignment="Top" Height="25.96" Width="57.957"/>
         <Label Content="Search:" Margin="0,3.862,132.569,0" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="47.864" Height="25.96"/>

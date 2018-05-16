@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,8 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view.Filter = ProductFilter;
         }
 
         public void LoadProviderData()
@@ -550,6 +553,21 @@ namespace Project_WPF
         }
 
 
+        private bool ProductFilter(object item)
+        {
+            if (String.IsNullOrEmpty(productsearch.Text))
+                return true;
+            else 
+                return ((item as Toode).Nimi.IndexOf(productsearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+           
+        }
+
+
+        private void productsearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+
+        }
     }
 
     public static class Controll
