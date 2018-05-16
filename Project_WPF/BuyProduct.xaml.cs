@@ -83,10 +83,10 @@ namespace Project_WPF
 
         private void BasketSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (basketList.SelectedIndex >= 0)
-            {
-                BasketControllStatuss = (Ostukorvi)basketList.SelectedItems[0];
-            }
+            //if (basketList.SelectedIndex >= 0)
+            //{
+            //    BasketControllStatuss = (Ostukorvi)basketList.SelectedItems[0];
+            //}
         }
 
 
@@ -201,5 +201,7 @@ namespace Project_WPF
                 MessageBox.Show("Basket is empty!", "Error");
             }
         }
+
+        
     }
 }
