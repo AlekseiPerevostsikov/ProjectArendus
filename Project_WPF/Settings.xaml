@@ -18,7 +18,7 @@
         <ListBox x:Name="listtax" HorizontalAlignment="Left" Height="26" Margin="210,48,0,0" VerticalAlignment="Top" Width="93" SelectionMode="Single"/>
         <ListBox x:Name="listtax2" HorizontalAlignment="Left" Height="26" Margin="210,79,0,0" VerticalAlignment="Top" Width="93" SelectionMode="Single"/>
         <Button x:Name="test" Content="Test" HorizontalAlignment="Left" Margin="140,195,0,0" VerticalAlignment="Top" Width="75" Click="test_Click"/>
-        <Label x:Name="testlabel" Content="Label" HorizontalAlignment="Left" Margin="158,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.254,0.462"/>
+        <Label x:Name="testlabel" Content="Label" HorizontalAlignment="Left" Margin="121,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.254,0.462"/>
 
     </Grid>
 </Window>

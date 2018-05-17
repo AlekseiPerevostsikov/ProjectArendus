@@ -31,7 +31,7 @@ namespace Project_WPF
             listtax.ItemsSource = items;
             listtax.SelectedIndex = Convert.ToInt32(ControllForm.StaticTax.Tax.Statetax);
             listtax2.ItemsSource = items;
-            listtax2.SelectedItem = Convert.ToInt32(ControllForm.StaticTax.Tax.Warehousetax);
+            listtax2.SelectedIndex = Convert.ToInt32(ControllForm.StaticTax.Tax.Warehousetax);
             testlabel.Visibility = Visibility.Hidden;
         }
 
@@ -42,8 +42,9 @@ namespace Project_WPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ControllForm.StaticTax.Tax.Warehousetax = Convert.ToInt32(listtax.SelectedItem);
-            ControllForm.StaticTax.Tax.Statetax = Convert.ToInt32(listtax2.SelectedItem);
+            if (MessageBox.Show("Save Changes?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                ControllForm.StaticTax.Tax.Warehousetax = Convert.ToInt32(listtax.SelectedItem);
+                ControllForm.StaticTax.Tax.Statetax = Convert.ToInt32(listtax2.SelectedItem);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -54,9 +55,11 @@ namespace Project_WPF
 
         private void test_Click(object sender, RoutedEventArgs e)
         {
-            long a = 10;
+            double a = 10;
             testlabel.Visibility = Visibility.Visible;
-            testlabel.Content = a + (a * (ControllForm.StaticTax.Tax.Warehousetax / 100)) + (a * (ControllForm.StaticTax.Tax.Statetax / 100));
+            string text = a + "+(" + a *  Convert.ToDouble(listtax2.SelectedItem) / 100 + " + " + Convert.ToDouble(listtax.SelectedItem) / 100 + ")" + "=";
+            double answer = 10 + (10 * (Convert.ToDouble(listtax2.SelectedItem) / 100)) + (10 * (Convert.ToDouble(listtax.SelectedItem) / 100));
+            testlabel.Content =  text + answer;
         }
     }
 }
