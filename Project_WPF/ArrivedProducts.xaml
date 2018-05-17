@@ -66,6 +66,8 @@
 
         <TextBox x:Name="txtProviderName" HorizontalAlignment="Left" Height="23" Margin="169,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Column="2" Grid.Row="1" TextChanged="txtProviderName_TextChanged"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="107,22,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="1.123,0.5" Grid.Column="2" Grid.Row="1" Height="25.96"/>
+        <TextBox x:Name="txtProductName_Copy" HorizontalAlignment="Left" Height="23" Margin="402,0.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="2" TextChanged="txtProductName_Copy_TextChanged"/>
+        <Label Content="Search: " HorizontalAlignment="Left" Margin="331,0.4,0,0" VerticalAlignment="Top" Width="57" Grid.Row="2" Height="26"/>
 
     </Grid>
 </Window>

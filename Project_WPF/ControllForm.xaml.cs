@@ -566,19 +566,26 @@ namespace Project_WPF
 
         private bool ProductFilter(object item)
         {
+            var toode = (Toode)item;
             if (String.IsNullOrEmpty(productsearch.Text))
                 return true;
-            else 
-                return ((item as Toode).Nimi.IndexOf(productsearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-           
+
+            else
+                return (toode.Nimi.StartsWith(productsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Nimi.StartsWith(productsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Kategooria.Nimi.StartsWith(productsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.KoodToode.StartsWith(productsearch.Text, StringComparison.OrdinalIgnoreCase));
+
         }
 
         private bool CategoryFilter(object item)
         {
+            var toode = (Kategooria)item;
             if (String.IsNullOrEmpty(categorysearch.Text))
                 return true;
+
             else
-                return ((item as Kategooria).Nimi.IndexOf(categorysearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (toode.Nimi.StartsWith(categorysearch.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 
@@ -592,18 +599,26 @@ namespace Project_WPF
 
         private bool SubCategoryFiltr(object item)
         {
+            var toode = (Alamkategooria)item;
             if (String.IsNullOrEmpty(subcategorysearch.Text))
                 return true;
+
             else
-                return ((item as Alamkategooria).Nimi.IndexOf(subcategorysearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (toode.Nimi.StartsWith(subcategorysearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Kategooria.Nimi.StartsWith(subcategorysearch.Text, StringComparison.OrdinalIgnoreCase));
         }
         
         private bool ClientFilter(object item)
         {
+            var toode = (Klient)item;
             if (String.IsNullOrEmpty(clientsearch.Text))
                 return true;
+
             else
-                return ((item as Klient).Nimi.IndexOf(clientsearch.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (toode.Nimi.StartsWith(clientsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Perekonnanimi.StartsWith(clientsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Telefon.StartsWith(clientsearch.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Aadress.StartsWith(clientsearch.Text, StringComparison.OrdinalIgnoreCase));
         }
         
         private void productsearch_TextChanged(object sender, TextChangedEventArgs e)
