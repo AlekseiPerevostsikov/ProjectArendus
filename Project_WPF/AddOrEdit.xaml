@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF"
         mc:Ignorable="d"
-        Title="Add" Height="347.273" Width="472.727" WindowStartupLocation="CenterScreen" Loaded="AddFormLoaded">
+        Title="Add" Height="347.273" Width="472.727" WindowStartupLocation="CenterScreen" Loaded="AddFormLoaded" ResizeMode="CanMinimize">
     <Grid>
         <Label x:Name="lbl1" Content="label" HorizontalAlignment="Left" Margin="87,28,0,0" VerticalAlignment="Top" Width="138"/>
         <Label x:Name="lbl2" Content="label" HorizontalAlignment="Left" Margin="87,68,0,0" VerticalAlignment="Top" Width="138"/>
