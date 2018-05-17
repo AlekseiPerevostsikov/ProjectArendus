@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project_WPF"
         xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" x:Class="Project_WPF.ShowProducts"
         mc:Ignorable="d"
-        Title="Show Products" Height="470.665" Width="756.475" WindowStartupLocation="CenterScreen">
+        Title="Show Products" Height="470.665" Width="862.975" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
@@ -18,9 +18,10 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Kategooria.Nimi}" Width="200" Header="Category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Hind}" Width="70" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="80" Header="Quantity"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="180" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Kategooria.Nimi}" Width="190" Header="Category"/>
                 </GridView>
             </ListView.View>
         </ListView>
