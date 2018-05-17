@@ -42,10 +42,16 @@ namespace Project_WPF
 
         private bool ProductFilter(object item)
         {
+            var toode = (Toode)item;
             if (String.IsNullOrEmpty(txtProductName.Text))
                 return true;
+
             else
-                return ((item as Toode).Nimi.IndexOf(txtProductName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.KoodToode.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
+
 
         }
 
