@@ -203,7 +203,8 @@ namespace Project_WPF
 
                 int error = DB.AddBasket(temp);
 
-                int error2 = DB.UpdateProductQuantityWhenAddToBasket(ProductControllStatuss.ID, Convert.ToInt16(cbProdyctQuntity.SelectedValue));
+                DB.UpdateProductQuantityWhenAddToBasket(ProductControllStatuss.ID, Convert.ToInt16(cbProdyctQuntity.SelectedValue));
+
                 cbProdyctQuntity.Items.Clear();
                 QuantityProductUpdateWhenProductChange();
                 LoadProductData();
@@ -239,7 +240,8 @@ namespace Project_WPF
                 {
                     try
                     {
-                        int error2 = DB.UpdateProductQuantityWhenDeleteFromBasket(BasketControllStatuss.Toode.ID, BasketControllStatuss.Kogus);
+                        DB.UpdateProductQuantityWhenDeleteFromBasket(BasketControllStatuss.Toode.ID, BasketControllStatuss.Kogus);
+
                         cbProdyctQuntity.Items.Clear();
                         QuantityProductUpdateWhenProductChange();
 

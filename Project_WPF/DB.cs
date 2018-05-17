@@ -350,9 +350,8 @@ namespace Project_WPF
             return error;
         }
 
-        public static int UpdateProductQuantityWhenAddToBasket(int productId, int quantity)
+        public static void UpdateProductQuantityWhenAddToBasket(int productId, int quantity)
         {
-            int error = 0;
             try
             {
                 var original = c.Toodes.Find(productId);
@@ -360,13 +359,10 @@ namespace Project_WPF
                 temp.Kogus -= quantity;
                 c.Entry(original).CurrentValues.SetValues(temp);
                 c.SaveChanges();
-                error = 1;
             }
             catch
             {
-                error = 0;
             }
-            return error;
         }
 
 
@@ -605,9 +601,8 @@ namespace Project_WPF
 
 
 
-        public static int UpdateProductQuantityWhenDeleteFromBasket(int productId, int quantity)
+        public static void UpdateProductQuantityWhenDeleteFromBasket(int productId, int quantity)
         {
-            int error = 0;
             try
             {
                 var original = c.Toodes.Find(productId);
@@ -615,13 +610,10 @@ namespace Project_WPF
                 temp.Kogus += quantity;
                 c.Entry(original).CurrentValues.SetValues(temp);
                 c.SaveChanges();
-                error = 1;
             }
             catch
             {
-                error = 0;
             }
-            return error;
         }
 
 
