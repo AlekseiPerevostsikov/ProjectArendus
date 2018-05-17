@@ -28,6 +28,7 @@ namespace Project_WPF
         Alamkategooria SubCategoryControllStatuss;
         Klient ClientControllStatuss;
 
+        private static Tax tax = new Tax(5, 20);
         int productId;
         int providerId;
         int categoryId;
@@ -37,6 +38,13 @@ namespace Project_WPF
         public ControllForm()
         {
             InitializeComponent();
+        }
+
+        public class StaticTax
+        {
+           
+
+            internal static Tax Tax { get => tax; set => tax = value; }
         }
 
         private void FormActivated(object sender, EventArgs e)
@@ -644,6 +652,12 @@ namespace Project_WPF
         private void clientsearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(clientList.ItemsSource).Refresh();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
     /// 
