@@ -23,7 +23,6 @@ C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\bin\Debu
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\bin\Debug\netstandard2.0\System.Configuration.xml
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\bin\Debug\netstandard2.0\System.Security.xml
-C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.csprojResolveAssemblyReference.cache
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.csproj.CoreCompileInputs.cache
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.AssemblyInfoInputs.cache
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.AssemblyInfo.cs

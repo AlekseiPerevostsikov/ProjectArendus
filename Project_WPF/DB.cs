@@ -371,7 +371,7 @@ namespace Project_WPF
 
 
 
-        public static void Remove1QuantityFromProduct(int productId)
+        public static void Remove1QuantityFromProductInBuy(int productId)
         {
             try
             {
@@ -387,6 +387,12 @@ namespace Project_WPF
             }
            
         }
+
+
+        ///
+        ///Buy product
+        ///
+        ///
 
 
         public static void Remove1QuantityFromProductInBasket(int basketId)
@@ -408,7 +414,7 @@ namespace Project_WPF
 
 
 
-        public static void Add1QuantityFromProduct(int productId)
+        public static void Add1QuantityFromProductInBuy(int productId)
         {
             try
             {
@@ -439,6 +445,87 @@ namespace Project_WPF
 
             }
         }
+
+
+
+
+        ///
+        /// Arrived product
+        ///
+        /// 
+
+
+
+
+        //public static void Remove1QuantityFromProductInArrived(int productId)
+        //{
+        //    try
+        //    {
+        //        var original = c.Toodes.Find(productId);
+        //        Toode temp = DB.GetProductByProductId(productId);
+        //        temp.Kogus += 1;
+        //        c.Entry(original).CurrentValues.SetValues(temp);
+        //        c.SaveChanges();
+        //    }
+        //    catch
+        //    {
+
+        //    }
+
+        //}
+
+
+        public static void Remove1QuantityFromProductInArrivedTempData(int arrivedProductCheckId)
+        {
+            try
+            {
+                var original = c.SisseTulebArvs.Find(arrivedProductCheckId);
+                SisseTulebArv temp = DB.GetArrivedProductCheckByArrivedProductCheckId(arrivedProductCheckId);
+                temp.SisseTuleb.Kogus += 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+
+        //public static void Add1QuantityFromProductInArrived(int productId)
+        //{
+        //    try
+        //    {
+        //        var original = c.Toodes.Find(productId);
+        //        Toode temp = DB.GetProductByProductId(productId);
+        //        temp.Kogus -= 1;
+        //        c.Entry(original).CurrentValues.SetValues(temp);
+        //        c.SaveChanges();
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //}
+
+        public static void Add1QuantityFromProductInArrivedTempData(int arrivedProductCheckId)
+        {
+            try
+            {
+                var original = c.SisseTulebArvs.Find(arrivedProductCheckId);
+                SisseTulebArv temp = DB.GetArrivedProductCheckByArrivedProductCheckId(arrivedProductCheckId);
+                temp.SisseTuleb.Kogus -= 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+        }
+
+
 
 
 
