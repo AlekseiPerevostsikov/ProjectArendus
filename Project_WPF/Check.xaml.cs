@@ -51,5 +51,26 @@ namespace Project_WPF
                 CheckControllStatuss = (Arve)checklList.SelectedItems[0];
             }
         }
+
+        private bool CheckFilter(object item)
+        {
+            var korv = (Ostukorvi)item;
+            if (String.IsNullOrEmpty(txtProductName.Text))
+                return true;
+
+            else
+                return (korv.Toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Klient.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Klient.Perekonnanimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
+
+        }
+
+        private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(checklList.ItemsSource);
+            view.Filter = CheckFilter;
+            CollectionViewSource.GetDefaultView(checklList.ItemsSource).Refresh();
+        }
     }
 }
