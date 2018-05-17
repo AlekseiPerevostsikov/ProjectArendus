@@ -73,9 +73,13 @@
     <Compile Include="Context.cs" />
     <Compile Include="DataInitializer.cs" />
     <Compile Include="DB.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowProducts.xaml.cs">
       <DependentUpon>ShowProducts.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tax.cs" />
     <Page Include="AddOrEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShowProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

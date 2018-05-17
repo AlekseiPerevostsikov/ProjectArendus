@@ -24,7 +24,7 @@
 
         <Menu Height="22" VerticalAlignment="Top" Grid.ColumnSpan="7" >
             <MenuItem Header="File">
-                <MenuItem Header="something" ></MenuItem>
+                <MenuItem Header="Settings" Click="MenuItem_Click" ></MenuItem>
 
                 <Separator />
                 <MenuItem Header="Exit"  Click="MenuItem_Exit"></MenuItem>

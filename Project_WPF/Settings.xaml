@@ -1,0 +1,24 @@
+﻿<Window x:Class="Project_WPF.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_WPF"
+        mc:Ignorable="d"
+        Title="Settings" Height="335.966" Width="380.151" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="225*"/>
+            <RowDefinition Height="82*"/>
+        </Grid.RowDefinitions>
+        <Button Content="OK" HorizontalAlignment="Left" Margin="64,16.667,0,0" VerticalAlignment="Top" Width="74" Grid.Row="1" Click="Button_Click_1"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="226,16.667,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click" Grid.Row="1"/>
+        <Label Content="Percentage of goods:" HorizontalAlignment="Left" Margin="80,79,0,0" VerticalAlignment="Top"/>
+        <Label Content="Turnover tax:" HorizontalAlignment="Left" Margin="80,48,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="listtax" HorizontalAlignment="Left" Height="26" Margin="210,48,0,0" VerticalAlignment="Top" Width="93" SelectionMode="Single"/>
+        <ListBox x:Name="listtax2" HorizontalAlignment="Left" Height="26" Margin="210,79,0,0" VerticalAlignment="Top" Width="93" SelectionMode="Single"/>
+        <Button x:Name="test" Content="Test" HorizontalAlignment="Left" Margin="140,195,0,0" VerticalAlignment="Top" Width="75" Click="test_Click"/>
+        <Label x:Name="testlabel" Content="Label" HorizontalAlignment="Left" Margin="158,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.254,0.462"/>
+
+    </Grid>
+</Window>
