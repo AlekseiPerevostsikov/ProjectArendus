@@ -256,7 +256,7 @@ namespace Project_WPF
         private bool TempProductFilter(object item)
         {
             var toode = (SisseTulebArv)item;
-            if (String.IsNullOrEmpty(txtProductName_Copy.Text))
+            if (String.IsNullOrEmpty(txtProductName.Text))
                 return true;
 
             else

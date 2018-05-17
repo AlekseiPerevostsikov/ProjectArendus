@@ -217,13 +217,13 @@ namespace Project_WPF
                 {
                     try
                     {
-                        //foreach (var i in arrivedProductCheckItems)
-                        //{
-                        //    DB.UpdateProductQuantity(i.SisseTuleb.Toode.ID, i.SisseTuleb.Kogus);
-                        //}
-                        //Controll.dateTimeArrivedProduct = DateTime.Now;
-                        //arrivedProductCheckItems.Clear();
-                        //LoadProductData();
+                        foreach (var i in basketItems)
+                        {
+                            DB.AddCkeck(new Arve { OstukorviId=i.ID, Date=DateTime.Now });
+                        }
+                        Controll.dateTimeBuyProduct = DateTime.Now;
+                        basketItems.Clear();
+                       // LoadProductData();
                     }
                     catch (Exception ex)
                     {

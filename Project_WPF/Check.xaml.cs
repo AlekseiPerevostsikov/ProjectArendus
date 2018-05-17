@@ -54,15 +54,15 @@ namespace Project_WPF
 
         private bool CheckFilter(object item)
         {
-            var korv = (Ostukorvi)item;
+            var korv = (Arve)item;
             if (String.IsNullOrEmpty(txtProductName.Text))
                 return true;
 
             else
-                return (korv.Toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
-                || korv.Toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
-                || korv.Klient.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
-                || korv.Klient.Perekonnanimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
+                return (korv.Ostukorvi.Toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Ostukorvi.Toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Ostukorvi.Klient.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Ostukorvi.Klient.Perekonnanimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 

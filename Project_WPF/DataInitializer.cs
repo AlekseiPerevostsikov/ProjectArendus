@@ -96,14 +96,15 @@ namespace Project_WPF
             context.SaveChanges();
 
 
-            var checks = new List<SisseTulebArv>
+            var arrivedProductChechk = new List<SisseTulebArv>
             {
                new SisseTulebArv{Date = DateTime.Now, PakkujaId = 1 , SisseTulebId=1, },
                new SisseTulebArv{Date = DateTime.Now, PakkujaId = 1 , SisseTulebId=2 }
             };
 
-            checks.ForEach(a => context.SisseTulebArvs.Add(a));
+            arrivedProductChechk.ForEach(a => context.SisseTulebArvs.Add(a));
             context.SaveChanges();
+
 
 
 
