@@ -14,20 +14,18 @@
         </Grid.RowDefinitions>
 
         <ListView SelectedIndex="0" x:Name="productlList" Margin="0,39,0,3.665" RenderTransformOrigin="0.494,0.667" Grid.Row="1">
-
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Addres}" Width="210" Header="Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="200" Header="Category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="60" Header="Quantity"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Kategooria.Nimi}" Width="200" Header="Category"/>
                 </GridView>
             </ListView.View>
-
         </ListView>
         <Label Content="Search:" HorizontalAlignment="Left" Margin="20,8.04,0,0" Width="53" Height="25.96" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Margin="78,10,0,0" TextWrapping="Wrap" Width="120" Height="23" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Margin="78,10,0,0" TextWrapping="Wrap" Width="120" Height="23" VerticalAlignment="Top" Grid.Row="1" TextChanged="ProductNameTextChanged"/>
 
     </Grid>
 </Window>
