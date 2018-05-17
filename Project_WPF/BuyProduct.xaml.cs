@@ -52,7 +52,7 @@ namespace Project_WPF
         {
             LoadProductData();
             LoadBasketData();
-            
+
         }
 
 
@@ -90,6 +90,9 @@ namespace Project_WPF
             cbProdyctQuntity.SelectedIndex = 0;
         }
 
+     
+
+
         private void ProductSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (productlList.SelectedIndex >= 0)
@@ -105,10 +108,64 @@ namespace Project_WPF
             if (basketList.SelectedIndex >= 0)
             {
                 BasketControllStatuss = (Ostukorvi)basketList.SelectedItems[0];
+                cbProdyctQuntity.Items.Clear();
             }
         }
 
 
+
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0 && basketList.SelectedIndex >= 0)
+            {
+                if (ProductControllStatuss.Kogus > 0)
+                {
+                    DB.Add1QuantityFromProduct(ProductControllStatuss.ID);
+                    cbProdyctQuntity.Items.Clear();
+                    QuantityProductUpdateWhenProductChange();
+                    LoadProductData();
+
+                    DB.Remove1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    LoadBasketData();
+                }
+                else
+                {
+                    MessageBox.Show("All product is ended!", "Error");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Product or basket nor choosed!", "Error");
+            }
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0 && basketList.SelectedIndex >= 0)
+            {
+                if (BasketControllStatuss.Kogus > 1)
+                {
+                    DB.Remove1QuantityFromProduct(ProductControllStatuss.ID);
+                    cbProdyctQuntity.Items.Clear();
+                    QuantityProductUpdateWhenProductChange();
+                    LoadProductData();
+
+                    DB.Add1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    LoadBasketData();
+                }
+                else
+                {
+                    MessageBox.Show("In basket need minimum 1 value!", "Error");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Product or basket nor choosed!", "Error");
+            }
+        }
 
 
 
@@ -145,7 +202,7 @@ namespace Project_WPF
                 if (error != 0)
                 {
                     MessageBox.Show("Was Added!", "Succesful");
-                   
+
                 }
                 else
                 {
@@ -182,11 +239,11 @@ namespace Project_WPF
 
                         int arv = DB.DeleteBasket(deleteBasket);
                         basketList.SelectedIndex = 0;
-                       
+
                         if (arv != 0)
                         {
                             MessageBox.Show("Was deleted!", "Succesful");
-                           
+
                         }
                         else
                         {
@@ -219,11 +276,11 @@ namespace Project_WPF
                     {
                         foreach (var i in basketItems)
                         {
-                            DB.AddCkeck(new Arve { OstukorviId=i.ID, Date=DateTime.Now });
+                            DB.AddCkeck(new Arve { OstukorviId = i.ID, Date = DateTime.Now });
                         }
                         Controll.dateTimeBuyProduct = DateTime.Now;
                         basketItems.Clear();
-                       // LoadProductData();
+                        // LoadProductData();
                     }
                     catch (Exception ex)
                     {
@@ -285,5 +342,7 @@ namespace Project_WPF
             view.Filter = BasketFilter;
             CollectionViewSource.GetDefaultView(basketList.ItemsSource).Refresh();
         }
+
+
     }
 }

@@ -369,6 +369,80 @@ namespace Project_WPF
             return error;
         }
 
+
+
+        public static void Remove1QuantityFromProduct(int productId)
+        {
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Kogus += 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+           
+        }
+
+
+        public static void Remove1QuantityFromProductInBasket(int basketId)
+        {
+            try
+            {
+                var original = c.Ostukorvis.Find(basketId);
+                Ostukorvi temp = DB.GetBasketByBasketId(basketId);
+                temp.Kogus += 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+
+
+        public static void Add1QuantityFromProduct(int productId)
+        {
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Kogus -= 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void Add1QuantityFromProductInBasket(int basketId)
+        {
+            try
+            {
+                var original = c.Ostukorvis.Find(basketId);
+                Ostukorvi temp = DB.GetBasketByBasketId(basketId);
+                temp.Kogus -= 1;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+
         public static int UpdateProductQuantityWhenDeleteFromBasket(int productId, int quantity)
         {
             int error = 0;
