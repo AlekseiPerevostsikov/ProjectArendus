@@ -11,24 +11,25 @@
             <RowDefinition Height="0*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <ListView SelectedIndex="0" x:Name="checklList" Margin="0,78.58,0,0" RenderTransformOrigin="0.494,0.667" Grid.Row="1" SelectionChanged="CheckSelectionChanged">
+
+        <ListView SelectedIndex="0" x:Name="checklList" Margin="0,51,0,0" RenderTransformOrigin="0.494,0.667" Grid.Row="1" SelectionChanged="CheckSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Nimi}" Width="230" Header="Product Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Hind}" Width="90" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Hind}" Width="90" Header="Price €"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Kogus}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Summ}" Width="100" Header="Total Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Summ}" Width="100" Header="Total Price €"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Nimi}" Width="120" Header="Client Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Perekonnanimi}" Width="120" Header="Client L Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Perekonnanimi}" Width="120" Header="Client Last Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="160" Header="Date"/>
                 </GridView>
             </ListView.View>
 
         </ListView>
-        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="93,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" TextChanged="txtProductName_TextChanged"/>
-        <Label Content="Search: " HorizontalAlignment="Left" Margin="21,41,0,0" VerticalAlignment="Top" Width="58" Height="23" Grid.Row="1"/>
+        <TextBox x:Name="txtProductName" Height="23" Margin="0,23,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TextChanged="txtProductName_TextChanged" HorizontalAlignment="Right" Width="120"/>
+        <Label Content="Search: " Margin="0,23,135,0" VerticalAlignment="Top" Height="23" Grid.Row="1" HorizontalAlignment="Right" Width="58"/>
+        <Label Content="Check Clients" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

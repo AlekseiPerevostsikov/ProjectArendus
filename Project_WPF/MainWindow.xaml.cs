@@ -24,16 +24,24 @@ namespace Project_WPF
         {
             InitializeComponent();
             DataInitializer data = new DataInitializer();
+            
             data.InitializeDatabase(new Context());
         }
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
+            if (txtUserName.Text.ToLower().Equals("admin") && txtPassword.Password == "admin")
+            {
             ControllForm cf = new ControllForm();
             cf.Show();
             Controll.dateTimeArrivedProduct = DateTime.Now;
             Controll.dateTimeBuyProduct = DateTime.Now;
             this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error login or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
     }
