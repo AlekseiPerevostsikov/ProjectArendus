@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,6 @@ namespace Project_WPF
         Toode ProductControllStatuss;
         Ostukorvi BasketControllStatuss;
         ObservableCollection<Ostukorvi> basketItems;
-
 
         public BuyProduct()
         {
@@ -64,10 +64,7 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
-            view.Filter = ProductFilter;
-            CollectionView view1 = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
-            view1.Filter = CategoryFilter;
+
         }
 
 
@@ -240,43 +237,53 @@ namespace Project_WPF
             }
         }
 
+
         private bool ProductFilter(object item)
         {
-
+            var toode = (Toode)item;
             if (String.IsNullOrEmpty(txtProductName.Text))
                 return true;
-            else
-                return ((item as Toode).Nimi.IndexOf(txtProductName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
+            else
+                return (toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.KoodToode.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 
-        private bool CategoryFilter(object item)
+        private bool BasketFilter(object item)
         {
-
-            if (String.IsNullOrEmpty(txtSubCategoryName.Text))
+            var toode = (Ostukorvi)item;
+            if (String.IsNullOrEmpty(txtProductNameInBasket.Text))
                 return true;
-            else
-                return ((item as Alamkategooria).Nimi.IndexOf(txtSubCategoryName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
+            else
+                return (toode.Toode.Nimi.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Toode.Alamkategooria.Nimi.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Toode.KoodToode.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Klient.Nimi.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Klient.Perekonnanimi.StartsWith(txtProductNameInBasket.Text, StringComparison.OrdinalIgnoreCase));
 
         }
+
 
 
 
         private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view.Filter = ProductFilter;
             CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+
         }
 
-        private void txtSubCategoryName_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtProductNameInBasket_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            test.Content = Convert.ToInt16(cbProdyctQuntity.SelectedValue);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(basketList.ItemsSource);
+            view.Filter = BasketFilter;
+            CollectionViewSource.GetDefaultView(basketList.ItemsSource).Refresh();
         }
     }
 }

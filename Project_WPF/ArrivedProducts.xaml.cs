@@ -115,8 +115,7 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
-            view.Filter = ProductFilter;
+            
         }
 
         public void LoadProviderData()
@@ -242,10 +241,30 @@ namespace Project_WPF
 
         private bool ProductFilter(object item)
         {
+            var toode = (Toode)item;
             if (String.IsNullOrEmpty(txtProductName.Text))
                 return true;
+
             else
-                return ((item as Toode).Nimi.IndexOf(txtProductName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.KoodToode.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
+
+        }
+
+        private bool TempProductFilter(object item)
+        {
+            var toode = (SisseTulebArv)item;
+            if (String.IsNullOrEmpty(txtProductName_Copy.Text))
+                return true;
+
+            else
+                return (toode.SisseTuleb.Toode.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.SisseTuleb.Toode.Alamkategooria.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.SisseTuleb.Toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.SisseTuleb.Toode.KoodToode.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Pakkuja.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 
@@ -263,12 +282,21 @@ namespace Project_WPF
 
         private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view.Filter = ProductFilter;
             CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
         }
 
         private void txtProviderName_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(providerlList.ItemsSource).Refresh();
+        }
+
+        private void txtProductName_Copy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ArrivedProductChecklList.ItemsSource);
+            view.Filter = TempProductFilter;
+            CollectionViewSource.GetDefaultView(ArrivedProductChecklList.ItemsSource).Refresh();
         }
     }
 }
