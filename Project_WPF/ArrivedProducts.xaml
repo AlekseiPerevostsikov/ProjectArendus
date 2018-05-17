@@ -21,25 +21,27 @@
         <ListView SelectedIndex="0" x:Name="ArrivedProductChecklList" Margin="10,33,2,10" SelectionChanged="ArrivedProductCheckSelectionCHanged" Grid.Row="2" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.KoodToode}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.KoodToode}" Width="50" Header="Code"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Nimi}" Width="170" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Hind}" Width="60" Header="Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Hind}" Width="85" Header="Price with Tax"/>
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Kogus}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Alamkategooria.Nimi}" Width="150" Header="Sub category"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Pakkuja.Nimi}" Width="200" Header="Provider"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="160" Header="Date"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Alamkategooria.Nimi}" Width="140" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Pakkuja.Nimi}" Width="150" Header="Provider"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="170" Header="Date"/>
                 </GridView>
             </ListView.View>
             <!--<Grid Height="0" Width="27"/>-->
         </ListView>
 
-        <Button x:Name="btnAddToTemp" Content="Add to temp" HorizontalAlignment="Left" Margin="163,175,0,0" VerticalAlignment="Top" Width="100" Click="btnAddToTemp_Click" Grid.Column="1" Grid.Row="1" Height="19.96"/>
+        <Button x:Name="btnAddToTemp" Content="Add to temp" HorizontalAlignment="Left" Margin="135,175,0,0" VerticalAlignment="Top" Width="100" Click="btnAddToTemp_Click" Grid.Column="1" Grid.Row="1" Height="20"/>
         <Label Content="Temporary data" HorizontalAlignment="Left" Margin="10,2.04,0,0" VerticalAlignment="Top" Width="136" RenderTransformOrigin="-0.025,0.718" Grid.Row="2" Height="25.96"/>
 
         <ListView SelectedIndex="0" x:Name="productlList" Margin="10,53,14,16" SelectionChanged="ProductSelectionChanged" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="60" Header="Code"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="200" Header="Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="100" Header="Quantity"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
                 </GridView>
@@ -50,8 +52,8 @@
         <Label Content="Provider" HorizontalAlignment="Left" Margin="19,22,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="3.466,0.308" Grid.Column="2" Grid.Row="1" Height="25.96"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="402,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1" TextChanged="txtProductName_TextChanged"/>
         <Label Content="Search: " HorizontalAlignment="Left" Margin="331,22,0,0" VerticalAlignment="Top" Width="57" Grid.Row="1" Height="25.96"/>
-        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="8,53,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1" Height="21.96"/>
-        <Label Content="Product quantity" HorizontalAlignment="Left" Margin="8,22,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1" Height="25.96"/>
+        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="8,53,0,0" VerticalAlignment="Top" Width="88" Grid.Column="1" Grid.Row="1" Height="22"/>
+        <Label x:Name="test" Content="Product quantity" HorizontalAlignment="Left" Margin="8,22,0,0" VerticalAlignment="Top" Width="105" Grid.Column="1" Grid.Row="1" Height="26"/>
         <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="19,280,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirm_Click" Grid.Row="2" Grid.Column="2" Height="20"/>
         <Button x:Name="btnDeleteTempProduct" Content="Delete temp data" HorizontalAlignment="Left" Margin="19,185,0,0" VerticalAlignment="Top" Width="136" Click="btnDeleteTempProduct_Click" Grid.Row="2" Grid.Column="2" Height="20"/>
         <Button x:Name="btnAddNewProduct" Content="New Product" HorizontalAlignment="Left" Margin="8,175,0,0" VerticalAlignment="Top" Width="88" Click="btnAddNewProduct_Click" Grid.Column="1" Grid.Row="1" Height="19.96"/>
@@ -71,6 +73,11 @@
         <Button x:Name="btnAdd" Content="+" Grid.Column="2" HorizontalAlignment="Left" Margin="19,84,0,0" Grid.Row="2" VerticalAlignment="Top" Width="32" Click="btnAdd_Click"/>
         <Button x:Name="btnRemove" Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="123,84,0,0" Grid.Row="2" VerticalAlignment="Top" Width="32" Click="btnRemove_Click"/>
         <Label Content="Change Product quantity" HorizontalAlignment="Left" Margin="19,33,0,0" VerticalAlignment="Top" Width="150" Grid.Row="2" Height="26" Grid.Column="2"/>
+        <Label Content="Euro" HorizontalAlignment="Left" Margin="135,22,0,0" VerticalAlignment="Top" Width="61" Grid.Column="1" Grid.Row="1" Height="26"/>
+        <ComboBox x:Name="cbPriceBeforeDot" Grid.Column="1" HorizontalAlignment="Left" Margin="135,53,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="59" RenderTransformOrigin="-0.068,-0.455"/>
+        <ComboBox x:Name="cbPriceAfterDot" Grid.Column="1" HorizontalAlignment="Left" Margin="221,53,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="59" RenderTransformOrigin="-0.068,-0.455"/>
+        <Label Content="," HorizontalAlignment="Left" Margin="199,53,0,0" VerticalAlignment="Top" Width="15" Grid.Column="1" Grid.Row="1" Height="26"/>
+        <Label Content="Cent" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="61" Grid.Column="1" Grid.Row="1" Height="26"/>
 
     </Grid>
 </Window>

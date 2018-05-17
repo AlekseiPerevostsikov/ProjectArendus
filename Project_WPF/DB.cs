@@ -401,7 +401,7 @@ namespace Project_WPF
             {
                 var original = c.Ostukorvis.Find(basketId);
                 Ostukorvi temp = DB.GetBasketByBasketId(basketId);
-                temp.Kogus += 1;
+                temp.Kogus -= 1;
                 c.Entry(original).CurrentValues.SetValues(temp);
                 c.SaveChanges();
             }
@@ -430,13 +430,52 @@ namespace Project_WPF
             }
         }
 
+
+        public static void RefreshBasketSummWhenMinusPressed(int basketId, double productPrice)
+        {
+            try
+            {
+                var original = c.Ostukorvis.Find(basketId);
+                Ostukorvi temp = DB.GetBasketByBasketId(basketId);
+                temp.Summ -= Math.Round(productPrice, 2);
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+        public static void RefreshBasketSummWhenPlussPressed(int basketId, double productPrice)
+        {
+            try
+            {
+                var original = c.Ostukorvis.Find(basketId);
+                Ostukorvi temp = DB.GetBasketByBasketId(basketId);
+                temp.Summ += Math.Round(productPrice, 2);
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
+
+
         public static void Add1QuantityFromProductInBasket(int basketId)
         {
             try
             {
                 var original = c.Ostukorvis.Find(basketId);
                 Ostukorvi temp = DB.GetBasketByBasketId(basketId);
-                temp.Kogus -= 1;
+                temp.Kogus += 1;
                 c.Entry(original).CurrentValues.SetValues(temp);
                 c.SaveChanges();
             }
@@ -522,6 +561,42 @@ namespace Project_WPF
             catch
             {
 
+            }
+        }
+
+
+
+
+
+        public static void UpdateProductPriseWInArrived(int productId, double newPrice)
+        {
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Hind= Math.Round(newPrice, 2);
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
+            }
+        }
+
+
+        public static void UpdateProductPriseWithTaxInArrived(int arrivedId, double arrivedPrice)
+        {
+            try
+            {
+                var original = c.SisseTulebs.Find(arrivedId);
+                SisseTuleb temp = DB.GetArrivedProductByArrivedProductId(arrivedId);
+                temp.Hind = Math.Round(arrivedPrice, 2);
+                //temp.Toode.Hind = productPrice;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+            }
+            catch
+            {
             }
         }
 

@@ -26,6 +26,9 @@ namespace Project_WPF
         SisseTulebArv ArrivedProductCheckControllStatuss;
         ObservableCollection<SisseTulebArv> arrivedProductCheckItems;
 
+        double productPriceWithoutTax;
+        double productPriceWithTaxAndPluss;
+
         // int productId;
 
         public ArrivedProducts()
@@ -48,6 +51,18 @@ namespace Project_WPF
                 cbProdyctQuntity.Items.Add(i);
             }
             cbProdyctQuntity.SelectedIndex = 0;
+
+            for (int i = 1; i <= 1500; i++)
+            {
+                cbPriceBeforeDot.Items.Add(i);
+            }
+            cbPriceBeforeDot.SelectedIndex = 9;
+
+            for (int i = 0; i <= 99; i++)
+            {
+                cbPriceAfterDot.Items.Add(i);
+            }
+            cbPriceAfterDot.SelectedIndex = 0;
         }
 
 
@@ -60,7 +75,7 @@ namespace Project_WPF
             addOrEdit.Show();
         }
 
-
+    
 
         private void btnAddToTemp_Click(object sender, RoutedEventArgs e)
         {
@@ -68,18 +83,28 @@ namespace Project_WPF
             {
                 try
                 {
+                    productPriceWithoutTax = Convert.ToDouble(cbPriceBeforeDot.SelectedItem) + (Convert.ToDouble(cbPriceAfterDot.SelectedItem) / 100);
+                    productPriceWithTaxAndPluss = productPriceWithoutTax + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Warehousetax / 100)) + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Statetax / 100));
                     SisseTulebArv temp = new SisseTulebArv();
                     temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
+
+                    //temp.SisseTuleb.Toode.Hind= productPriceWithTaxAndPluss;
                     //.Toode.ID = ProductControllStatuss.ID;
                     //temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
                     //temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
                     //temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
                     temp.Pakkuja = ProviderControllStatuss;
 
-                    //temp.Hind = 10;
+                   // temp.SisseTuleb.Hind = productPriceWithoutTax;
+                    //temp.SisseTuleb.Toode.Hind = productPriceWithTaxAndPluss;
                     temp.Date = DateTime.Now;
 
+
+
                     int error = DB.AddArrivedProductCheck(temp);
+                    DB.UpdateProductPriseWInArrived(ProductControllStatuss.ID, productPriceWithTaxAndPluss);
+
+                    DB.UpdateProductPriseWithTaxInArrived(temp.SisseTuleb.ID, productPriceWithoutTax);
                     if (error != 0)
                     {
                         MessageBox.Show("Was Added!", "Succesful");
@@ -115,7 +140,7 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
-            
+
         }
 
         public void LoadProviderData()
@@ -181,11 +206,11 @@ namespace Project_WPF
         {
             if (productlList.SelectedIndex >= 0 && ArrivedProductChecklList.SelectedIndex >= 0)
             {
-                if (ProductControllStatuss.Kogus > 0)
+                if (ProductControllStatuss.Kogus >= 0)
                 {
                     //DB.Add1QuantityFromProductInArrived(ProductControllStatuss.ID); //Add1QuantityFromProductInBuy(ProductControllStatuss.ID);
                     //cbProdyctQuntity.Items.Clear();
-                   // LoadProductData();
+                    // LoadProductData();
 
                     DB.Remove1QuantityFromProductInArrivedTempData(ArrivedProductCheckControllStatuss.ID);//Remove1QuantityFromProductInBasket(BasketControllStatuss.ID);
                     LoadArrivedProductCheckData();
@@ -208,8 +233,8 @@ namespace Project_WPF
             {
                 if (ArrivedProductCheckControllStatuss.SisseTuleb.Kogus > 1)
                 {
-                   // DB.Remove1QuantityFromProductInArrived(ProductControllStatuss.ID);//Remove1QuantityFromProductInBuy(ProductControllStatuss.ID);
-                   // cbProdyctQuntity.Items.Clear();
+                    // DB.Remove1QuantityFromProductInArrived(ProductControllStatuss.ID);//Remove1QuantityFromProductInBuy(ProductControllStatuss.ID);
+                    // cbProdyctQuntity.Items.Clear();
                     //LoadProductData();
 
                     DB.Add1QuantityFromProductInArrivedTempData(ArrivedProductCheckControllStatuss.ID);//Add1QuantityFromProductInBasket(BasketControllStatuss.ID);
@@ -332,7 +357,7 @@ namespace Project_WPF
         }
 
 
-        
+
 
         private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
         {

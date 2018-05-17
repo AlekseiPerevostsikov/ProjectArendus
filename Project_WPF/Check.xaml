@@ -19,7 +19,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Toode.Hind}" Width="90" Header="Price"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Kogus}" Width="60" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi}" Width="100" Header="Total Price"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Summ}" Width="100" Header="Total Price"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Nimi}" Width="120" Header="Client Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Perekonnanimi}" Width="120" Header="Client L Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="160" Header="Date"/>

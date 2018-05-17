@@ -36,31 +36,22 @@
                 <MenuItem Header="Add Client" Click="MenuItem_AddClient"></MenuItem>
                 <MenuItem Header="Add Provider" Click="MenuItem_AddProvider"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit" >
-                <MenuItem  Name="MenuItemEditProduct" Header="Edit Product" Click="MenuItem_EditProduct" ></MenuItem>
-                <MenuItem Name="MenuItemEditCategory" Header="Edit Category" Click="MenuItem_EditCategory"></MenuItem>
-                <MenuItem Name="MenuItemEditSubCategory" Header="Edit SubCategory" Click="MenuItem_EditSubCategory"></MenuItem>
-                <MenuItem Name="MenuItemEditClient" Header="Edit Client" Click="MenuItem_EditClient"></MenuItem>
-                <MenuItem Name="MenuItemEditProvider" Header="Edit Provider" Click="MenuItem_EditProvider"></MenuItem>
-            </MenuItem>
-
+           
             <MenuItem Header="Add Arrived products" Click="MenuItem_AddArrivedProducts"></MenuItem>
             <MenuItem Header="Buy Product" Click="MenuItem_BuyProduct"></MenuItem>
             <MenuItem Header="Show Products" Click="MenuItem_ShowProducts"></MenuItem>
             <MenuItem Header="Checks" Click="MenuItem_ShowChecks"></MenuItem>
         </Menu>
 
-
-        <Button Content="Disable" Margin="0,27,0.792,0" VerticalAlignment="Top" Click="Button_Click" Height="19.96" Grid.Column="2" HorizontalAlignment="Right" Width="76"/>
-        <Button Content="Enable" Margin="0,27,5.142,0" VerticalAlignment="Top" Click="Button_Click_1" Height="19.96" Grid.Column="3" HorizontalAlignment="Right" Width="76"/>
-
-        <ListView SelectedIndex="0" x:Name="productlList" Margin="10,54,68.808,9.179" SelectionChanged="ProductSelectionChanged" Grid.ColumnSpan="4">
+        <ListView SelectedIndex="0" x:Name="productlList" Margin="10,54,69,9" SelectionChanged="ProductSelectionChanged" Grid.ColumnSpan="4">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding KoodToode}" Width="70" Header="Code"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="210" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Nimi}" Width="200" Header="Name"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Hind}" Width="50" Header="Price"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Kogus}" Width="100" Header="Quantity"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="200" Header="Sub category"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Alamkategooria.Nimi}" Width="160
+                                    " Header="Sub category"/>
                 </GridView>
             </ListView.View>
         </ListView>

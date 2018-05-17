@@ -121,12 +121,17 @@ namespace Project_WPF
             {
                 if (ProductControllStatuss.Kogus > 0)
                 {
+                    DB.RefreshBasketSummWhenPlussPressed(BasketControllStatuss.ID, ProductControllStatuss.Hind);
+                   
+
                     DB.Add1QuantityFromProductInBuy(ProductControllStatuss.ID);
+                    
                     cbProdyctQuntity.Items.Clear();
                     QuantityProductUpdateWhenProductChange();
                     LoadProductData();
 
-                    DB.Remove1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    DB.Add1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                   
                     LoadBasketData();
                 }
                 else
@@ -147,12 +152,14 @@ namespace Project_WPF
             {
                 if (BasketControllStatuss.Kogus > 1)
                 {
+                    DB.RefreshBasketSummWhenMinusPressed(BasketControllStatuss.ID, ProductControllStatuss.Hind);
+
                     DB.Remove1QuantityFromProductInBuy(ProductControllStatuss.ID);
                     cbProdyctQuntity.Items.Clear();
                     QuantityProductUpdateWhenProductChange();
                     LoadProductData();
 
-                    DB.Add1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    DB.Remove1QuantityFromProductInBasket(BasketControllStatuss.ID);
                     LoadBasketData();
                 }
                 else
@@ -181,6 +188,7 @@ namespace Project_WPF
                 temp.Klient = DB.GetClientByClientId(((KeyValuePair<int, string>)cbClient.SelectedItem).Key);
                 temp.Toode = ProductControllStatuss;
                 temp.Date = DateTime.Now;
+                temp.Summ = ProductControllStatuss.Hind * Convert.ToDouble(cbProdyctQuntity.SelectedValue);
                 temp.Kogus = Convert.ToInt16(cbProdyctQuntity.SelectedValue);
 
                 //temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };

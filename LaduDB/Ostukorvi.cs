@@ -15,6 +15,7 @@ namespace LaduDB
         public int ToodeId { get; set; }
         public int Kogus { get; set; }
         public DateTime Date { get; set; }
+        public double Summ { get; set; }
 
 
         public virtual Klient Klient { get; set; }

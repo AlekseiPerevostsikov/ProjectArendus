@@ -487,62 +487,7 @@ namespace Project_WPF
 
 
 
-
-        //Edit value
-
-
-        private void MenuItem_EditProduct(object sender, RoutedEventArgs e)
-        {
-            AddOrEdit addOrEdit = new AddOrEdit();
-            addOrEdit.Title = "Edit Product";
-            Controll.Name = "editProduct";
-            addOrEdit.Show();
-        }
-
-        private void MenuItem_EditCategory(object sender, RoutedEventArgs e)
-        {
-            AddOrEdit addOrEdit = new AddOrEdit();
-            addOrEdit.Title = "Edit Category";
-            Controll.Name = "editCategory";
-            addOrEdit.Show();
-        }
-
-        private void MenuItem_EditSubCategory(object sender, RoutedEventArgs e)
-        {
-            AddOrEdit addOrEdit = new AddOrEdit();
-            addOrEdit.Title = "Edit SubCategory";
-            Controll.Name = "editSubCategory";
-            addOrEdit.Show();
-        }
-
-        private void MenuItem_EditClient(object sender, RoutedEventArgs e)
-        {
-            AddOrEdit addOrEdit = new AddOrEdit();
-            addOrEdit.Title = "Edit Client";
-            Controll.Name = "editClient";
-            addOrEdit.Show();
-        }
-
-        private void MenuItem_EditProvider(object sender, RoutedEventArgs e)
-        {
-            AddOrEdit addOrEdit = new AddOrEdit();
-            addOrEdit.Title = "Edit Provider";
-            Controll.Name = "editProvider";
-            addOrEdit.Show();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItemEditProduct.IsEnabled = false;
-            MenuItemEditClient.Visibility = Visibility.Hidden;
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MenuItemEditProduct.IsEnabled = true;
-            MenuItemEditClient.Visibility = Visibility.Visible;
-        }
-
+       
         private void MenuItem_ShowProducts(object sender, RoutedEventArgs e)
         {
             ShowProducts showProducts = new ShowProducts();
