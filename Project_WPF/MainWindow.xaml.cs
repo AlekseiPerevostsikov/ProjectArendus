@@ -32,6 +32,7 @@ namespace Project_WPF
             ControllForm cf = new ControllForm();
             cf.Show();
             Controll.dateTimeArrivedProduct = DateTime.Now;
+            Controll.dateTimeBuyProduct = DateTime.Now;
             this.Close();
 
         }

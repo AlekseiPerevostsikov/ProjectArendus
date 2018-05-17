@@ -23,7 +23,7 @@ namespace Project_WPF
     {
         Toode ProductControllStatuss;
         Ostukorvi BasketControllStatuss;
-
+        ObservableCollection<Ostukorvi> basketItems;
 
 
         public BuyProduct()
@@ -43,13 +43,16 @@ namespace Project_WPF
             cbClient.DisplayMemberPath = "Value";
             cbClient.SelectedValuePath = "Key";
             cbClient.SelectedIndex = 0;
+
+            productlList.SelectedIndex = 0;
+            cbProdyctQuntity.SelectedIndex = 0;
         }
 
         private void FormActivated(object sender, EventArgs e)
         {
             LoadProductData();
-            productlList.SelectedIndex = 0;
-            cbProdyctQuntity.SelectedIndex = 0;
+            LoadBasketData();
+            
         }
 
 
@@ -68,8 +71,27 @@ namespace Project_WPF
         }
 
 
+        public void LoadBasketData()
+        {
+            basketItems = new ObservableCollection<Ostukorvi>();
+            foreach (Ostukorvi i in DB.GetAllBasketsWhereDate(Controll.dateTimeBuyProduct).OrderByDescending(a => a.Date))
+            {
+                basketItems.Add(i);
+            }
+            basketList.ItemsSource = basketItems;
+
+        }
 
 
+
+        private void QuantityProductUpdateWhenProductChange()
+        {
+            for (int i = 1; i <= ProductControllStatuss.Kogus; i++)
+            {
+                cbProdyctQuntity.Items.Add(i);
+            }
+            cbProdyctQuntity.SelectedIndex = 0;
+        }
 
         private void ProductSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -77,20 +99,16 @@ namespace Project_WPF
             {
                 cbProdyctQuntity.Items.Clear();
                 ProductControllStatuss = (Toode)productlList.SelectedItems[0];
-                for (int i = 1; i <= ProductControllStatuss.Kogus; i++)
-                {
-                    cbProdyctQuntity.Items.Add(i);
-                }
-                cbProdyctQuntity.SelectedIndex = 0;
+                QuantityProductUpdateWhenProductChange();
             }
         }
 
         private void BasketSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (basketList.SelectedIndex >= 0)
-            //{
-            //    BasketControllStatuss = (Ostukorvi)basketList.SelectedItems[0];
-            //}
+            if (basketList.SelectedIndex >= 0)
+            {
+                BasketControllStatuss = (Ostukorvi)basketList.SelectedItems[0];
+            }
         }
 
 
@@ -101,39 +119,50 @@ namespace Project_WPF
 
         private void btnAddToBasket_Click(object sender, RoutedEventArgs e)
         {
-            if (productlList.SelectedIndex >= 0)
+            if (productlList.SelectedIndex >= 0 && cbProdyctQuntity.SelectedIndex >= 0)
             {
-                try
-                {
-                    //SisseTulebArv temp = new SisseTulebArv();
-                    //temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
-                    ////.Toode.ID = ProductControllStatuss.ID;
-                    ////temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
-                    ////temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
-                    ////temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
-                    //temp.Pakkuja = ProviderControllStatuss;
+                //try
+                //{
+                Ostukorvi temp = new Ostukorvi();
+                temp.Klient = DB.GetClientByClientId(((KeyValuePair<int, string>)cbClient.SelectedItem).Key);
+                temp.Toode = ProductControllStatuss;
+                temp.Date = DateTime.Now;
+                temp.Kogus = Convert.ToInt16(cbProdyctQuntity.SelectedValue);
 
-                    ////temp.Hind = 10;
-                    //temp.Date = DateTime.Now;
+                //temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
+                ////.Toode.ID = ProductControllStatuss.ID;
+                ////temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
+                ////temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
+                ////temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
+                //temp.Pakkuja = ProviderControllStatuss;
 
-                    //int error = DB.AddArrivedProductCheck(temp);
-                    //if (error != 0)
-                    //{
-                    //    MessageBox.Show("Was Added!", "Succesful");
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Error while adding!", "Error");
-                    //}
-                }
-                catch (Exception ex)
+                ////temp.Hind = 10;
+                //temp.Date = DateTime.Now;
+
+                int error = DB.AddBasket(temp);
+
+                int error2 = DB.UpdateProductQuantityWhenAddToBasket(ProductControllStatuss.ID, Convert.ToInt16(cbProdyctQuntity.SelectedValue));
+                cbProdyctQuntity.Items.Clear();
+                QuantityProductUpdateWhenProductChange();
+                LoadProductData();
+                if (error != 0)
                 {
-                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                    MessageBox.Show("Was Added!", "Succesful");
+                   
                 }
+                else
+                {
+                    MessageBox.Show("Error while adding!", "Error");
+                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                //}
             }
             else
             {
-                MessageBox.Show("Error product not choosed!", "Error");
+                MessageBox.Show("Error product not choosed or product quantity is empty!", "Error");
             }
         }
 
@@ -148,14 +177,19 @@ namespace Project_WPF
                 {
                     try
                     {
-                        Ostukorvi deleteBasket = DB.GetBasketByBasketId(BasketControllStatuss.ID);
+                        int error2 = DB.UpdateProductQuantityWhenDeleteFromBasket(BasketControllStatuss.Toode.ID, BasketControllStatuss.Kogus);
+                        cbProdyctQuntity.Items.Clear();
+                        QuantityProductUpdateWhenProductChange();
+
+                        Ostukorvi deleteBasket = BasketControllStatuss;
 
                         int arv = DB.DeleteBasket(deleteBasket);
-
+                        basketList.SelectedIndex = 0;
+                       
                         if (arv != 0)
                         {
                             MessageBox.Show("Was deleted!", "Succesful");
-                            basketList.SelectedIndex = 0;
+                           
                         }
                         else
                         {
@@ -228,7 +262,7 @@ namespace Project_WPF
 
         }
 
-        
+
 
         private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -238,6 +272,11 @@ namespace Project_WPF
         private void txtSubCategoryName_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            test.Content = Convert.ToInt16(cbProdyctQuntity.SelectedValue);
         }
     }
 }

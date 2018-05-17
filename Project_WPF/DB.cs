@@ -77,7 +77,7 @@ namespace Project_WPF
 
         public static List<Ostukorvi> GetAllBasketsWhereDate(DateTime date)
         {
-            return c.Ostukorvis.Where(a => a. ID>= 5).ToList();
+            return c.Ostukorvis.Where(a => a.Date>=date).ToList();
         }
 
 
@@ -349,6 +349,45 @@ namespace Project_WPF
             }
             return error;
         }
+
+        public static int UpdateProductQuantityWhenAddToBasket(int productId, int quantity)
+        {
+            int error = 0;
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Kogus -= quantity;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+                error = 1;
+            }
+            catch
+            {
+                error = 0;
+            }
+            return error;
+        }
+
+        public static int UpdateProductQuantityWhenDeleteFromBasket(int productId, int quantity)
+        {
+            int error = 0;
+            try
+            {
+                var original = c.Toodes.Find(productId);
+                Toode temp = DB.GetProductByProductId(productId);
+                temp.Kogus += quantity;
+                c.Entry(original).CurrentValues.SetValues(temp);
+                c.SaveChanges();
+                error = 1;
+            }
+            catch
+            {
+                error = 0;
+            }
+            return error;
+        }
+
 
 
 
