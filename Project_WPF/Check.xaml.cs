@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LaduDB;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,35 @@ namespace Project_WPF
     /// </summary>
     public partial class Check : Window
     {
+        Arve CheckControllStatuss;
+
+
         public Check()
         {
             InitializeComponent();
+        }
+
+        private void FormActivated(object sender, EventArgs e)
+        {
+            LoadProductData();
+        }
+
+        public void LoadProductData()
+        {
+            ObservableCollection<Arve> chechkItems = new ObservableCollection<Arve>();
+            foreach (var i in DB.GetAllCkecks().OrderBy(a => a.Date))
+            {
+                chechkItems.Add(i);
+            }
+            checklList.ItemsSource = chechkItems;
+        }
+
+        private void CheckSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (checklList.SelectedIndex>=0)
+            {
+                CheckControllStatuss = (Arve)checklList.SelectedItems[0];
+            }
         }
     }
 }
