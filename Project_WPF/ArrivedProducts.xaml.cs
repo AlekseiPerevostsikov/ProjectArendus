@@ -115,6 +115,8 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
+            view.Filter = ProductFilter;
         }
 
         public void LoadProviderData()
@@ -125,6 +127,8 @@ namespace Project_WPF
                 providerItems.Add(i);
             }
             providerlList.ItemsSource = providerItems;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(providerlList.ItemsSource);
+            view.Filter = ProviderFilter;
         }
 
 
@@ -236,6 +240,35 @@ namespace Project_WPF
             }
         }
 
+        private bool ProductFilter(object item)
+        {
+            if (String.IsNullOrEmpty(txtProductName.Text))
+                return true;
+            else
+                return ((item as Toode).Nimi.IndexOf(txtProductName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
+        }
+
+        private bool ProviderFilter(object item)
+        {
+            if (String.IsNullOrEmpty(txtProviderName.Text))
+                return true;
+            else
+                return ((item as Pakkuja).Nimi.IndexOf(txtProviderName.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+        }
+
+
+        
+
+        private void txtProductName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(productlList.ItemsSource).Refresh();
+        }
+
+        private void txtProviderName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(providerlList.ItemsSource).Refresh();
+        }
     }
 }
