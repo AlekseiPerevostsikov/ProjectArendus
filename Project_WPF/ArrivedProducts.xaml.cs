@@ -176,6 +176,60 @@ namespace Project_WPF
         }
 
 
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0 && ArrivedProductChecklList.SelectedIndex >= 0)
+            {
+                if (ProductControllStatuss.Kogus > 0)
+                {
+                    //DB.Add1QuantityFromProductInArrived(ProductControllStatuss.ID); //Add1QuantityFromProductInBuy(ProductControllStatuss.ID);
+                    //cbProdyctQuntity.Items.Clear();
+                   // LoadProductData();
+
+                    DB.Remove1QuantityFromProductInArrivedTempData(ArrivedProductCheckControllStatuss.ID);//Remove1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    LoadArrivedProductCheckData();
+                }
+                else
+                {
+                    MessageBox.Show("All product is ended!", "Error");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Product or basket nor choosed!", "Error");
+            }
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (productlList.SelectedIndex >= 0 && ArrivedProductChecklList.SelectedIndex >= 0)
+            {
+                if (ArrivedProductCheckControllStatuss.SisseTuleb.Kogus > 1)
+                {
+                   // DB.Remove1QuantityFromProductInArrived(ProductControllStatuss.ID);//Remove1QuantityFromProductInBuy(ProductControllStatuss.ID);
+                   // cbProdyctQuntity.Items.Clear();
+                    //LoadProductData();
+
+                    DB.Add1QuantityFromProductInArrivedTempData(ArrivedProductCheckControllStatuss.ID);//Add1QuantityFromProductInBasket(BasketControllStatuss.ID);
+                    LoadArrivedProductCheckData();
+                }
+                else
+                {
+                    MessageBox.Show("In basket need minimum 1 value!", "Error");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Product or basket nor choosed!", "Error");
+            }
+        }
+
+
+
+
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             if (ArrivedProductChecklList.SelectedIndex >= 0)
@@ -298,5 +352,7 @@ namespace Project_WPF
             view.Filter = TempProductFilter;
             CollectionViewSource.GetDefaultView(ArrivedProductChecklList.ItemsSource).Refresh();
         }
+
+       
     }
 }

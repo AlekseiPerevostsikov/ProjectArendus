@@ -305,3 +305,5 @@ C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj
 C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj\Debug\Project_WPF.csproj.CopyComplete
 C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj\Debug\Project_WPF.exe
 C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj\Debug\Project_WPF.pdb
+C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj\Debug\Settings.g.cs
+C:\Users\Администратор\source\repos\ProjectSolution\Project_WPF\obj\Debug\Settings.baml

@@ -121,7 +121,7 @@ namespace Project_WPF
             {
                 if (ProductControllStatuss.Kogus > 0)
                 {
-                    DB.Add1QuantityFromProduct(ProductControllStatuss.ID);
+                    DB.Add1QuantityFromProductInBuy(ProductControllStatuss.ID);
                     cbProdyctQuntity.Items.Clear();
                     QuantityProductUpdateWhenProductChange();
                     LoadProductData();
@@ -147,7 +147,7 @@ namespace Project_WPF
             {
                 if (BasketControllStatuss.Kogus > 1)
                 {
-                    DB.Remove1QuantityFromProduct(ProductControllStatuss.ID);
+                    DB.Remove1QuantityFromProductInBuy(ProductControllStatuss.ID);
                     cbProdyctQuntity.Items.Clear();
                     QuantityProductUpdateWhenProductChange();
                     LoadProductData();
