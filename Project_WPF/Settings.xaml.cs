@@ -57,7 +57,7 @@ namespace Project_WPF
         {
             double a = 10;
             testlabel.Visibility = Visibility.Visible;
-            string text = a + "+(" + a *  Convert.ToDouble(listtax2.SelectedItem) / 100 + " + " + Convert.ToDouble(listtax.SelectedItem) / 100 + ")" + "=";
+            string text = a + "+(" + a *  Convert.ToDouble(listtax2.SelectedItem) / 100 + " + " + (10 * Convert.ToDouble(listtax.SelectedItem) / 100 )+ ")" + "=";
             double answer = 10 + (10 * (Convert.ToDouble(listtax2.SelectedItem) / 100)) + (10 * (Convert.ToDouble(listtax.SelectedItem) / 100));
             testlabel.Content =  text + answer;
         }
