@@ -181,7 +181,7 @@ namespace Project_WPF
 
         private void btnAddToBasket_Click(object sender, RoutedEventArgs e)
         {
-            if (productlList.SelectedIndex >= 0 && cbProdyctQuntity.SelectedIndex >= 0)
+            if (productlList.SelectedIndex >= 0 && cbProdyctQuntity.SelectedIndex >= 0 && cbClient.SelectedIndex >=0)
             {
                 //try
                 //{
@@ -227,7 +227,7 @@ namespace Project_WPF
             }
             else
             {
-                MessageBox.Show("Error product not choosed or product quantity is empty!", "Error");
+                MessageBox.Show("Error product not choosed or product quantity is empty or client not choosed!", "Error");
             }
         }
 
