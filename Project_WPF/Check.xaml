@@ -22,7 +22,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Summ}" Width="100" Header="Total Price €"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Nimi}" Width="120" Header="Client Name"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Ostukorvi.Klient.Perekonnanimi}" Width="120" Header="Client Last Name"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="160" Header="Date"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date , StringFormat='dd.MM.yyyy HH:mm'}" Width="160" Header="Date"/>
                 </GridView>
             </ListView.View>
 

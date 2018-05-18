@@ -28,7 +28,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Kogus}" Width="60" Header="Quantity"/>
                     <GridViewColumn DisplayMemberBinding="{Binding SisseTuleb.Toode.Alamkategooria.Nimi}" Width="140" Header="Sub category"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Pakkuja.Nimi}" Width="150" Header="Provider"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="170" Header="Date"/>
+                    <GridViewColumn  DisplayMemberBinding="{Binding Date, StringFormat='dd.MM.yyyy HH:mm'}" Width="170" Header="Date"/>
                 </GridView>
             </ListView.View>
             <!--<Grid Height="0" Width="27"/>-->
