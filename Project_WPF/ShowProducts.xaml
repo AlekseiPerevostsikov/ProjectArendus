@@ -27,7 +27,7 @@
         </ListView>
         <Label Content="Search:" Margin="0,8,135,0" Height="26" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Right" Width="53"/>
         <TextBox x:Name="txtProductName" Margin="0,11,10,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Grid.Row="1" TextChanged="ProductNameTextChanged" HorizontalAlignment="Right" Width="120"/>
-        <Label Content="Products" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <Label x:Name="lProduct" Content="Products" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="124"/>
 
     </Grid>
 </Window>

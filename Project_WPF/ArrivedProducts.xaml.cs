@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,7 @@ namespace Project_WPF
         public ArrivedProducts()
         {
             InitializeComponent();
+
         }
 
 
@@ -52,17 +54,17 @@ namespace Project_WPF
             }
             cbProdyctQuntity.SelectedIndex = 0;
 
-            for (int i = 1; i <= 1500; i++)
-            {
-                cbPriceBeforeDot.Items.Add(i);
-            }
-            cbPriceBeforeDot.SelectedIndex = 9;
+            //for (int i = 1; i <= 1500; i++)
+            //{
+            //    cbPriceBeforeDot.Items.Add(i);
+            //}
+            //cbPriceBeforeDot.SelectedIndex = 9;
 
-            for (int i = 0; i <= 99; i++)
-            {
-                cbPriceAfterDot.Items.Add(i);
-            }
-            cbPriceAfterDot.SelectedIndex = 0;
+            //for (int i = 0; i <= 99; i++)
+            //{
+            //    cbPriceAfterDot.Items.Add(i);
+            //}
+            //cbPriceAfterDot.SelectedIndex = 0;
         }
 
 
@@ -81,43 +83,48 @@ namespace Project_WPF
         {
             if (productlList.SelectedIndex >= 0 && providerlList.SelectedIndex >= 0)
             {
-                try
+                    try
                 {
-                    productPriceWithoutTax = Convert.ToDouble(cbPriceBeforeDot.SelectedItem) + (Convert.ToDouble(cbPriceAfterDot.SelectedItem) / 100);
-                    productPriceWithTaxAndPluss = productPriceWithoutTax + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Warehousetax / 100)) + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Statetax / 100));
-                    SisseTulebArv temp = new SisseTulebArv();
-                    temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt16(cbProdyctQuntity.Text) };
+                    
+                        productPriceWithoutTax = Convert.ToDouble(cbPriceBeforeDot.Text) + (Convert.ToDouble(cbPriceAfterDot.Text) / 100);
+                        productPriceWithTaxAndPluss = productPriceWithoutTax + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Warehousetax / 100)) + (productPriceWithoutTax * (ControllForm.StaticTax.Tax.Statetax / 100));
+                        SisseTulebArv temp = new SisseTulebArv();
+                        temp.SisseTuleb = new SisseTuleb { toodeId = ProductControllStatuss.ID, Kogus = Convert.ToInt32(cbProdyctQuntity.Text) };
 
-                    //temp.SisseTuleb.Toode.Hind= productPriceWithTaxAndPluss;
-                    //.Toode.ID = ProductControllStatuss.ID;
-                    //temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
-                    //temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
-                    //temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
-                    temp.Pakkuja = ProviderControllStatuss;
+                        //temp.SisseTuleb.Toode.Hind= productPriceWithTaxAndPluss;
+                        //.Toode.ID = ProductControllStatuss.ID;
+                        //temp.SisseTuleb.Toode.KoodToode = ProductControllStatuss.KoodToode;
+                        //temp.SisseTuleb.Toode.Nimi = ProductControllStatuss.Nimi;
+                        //temp.SisseTuleb.Kogus = Convert.ToInt16(cbProdyctQuntity.Text);
+                        temp.Pakkuja = ProviderControllStatuss;
 
-                   // temp.SisseTuleb.Hind = productPriceWithoutTax;
-                    //temp.SisseTuleb.Toode.Hind = productPriceWithTaxAndPluss;
-                    temp.Date = DateTime.Now;
+                        // temp.SisseTuleb.Hind = productPriceWithoutTax;
+                        //temp.SisseTuleb.Toode.Hind = productPriceWithTaxAndPluss;
+                        temp.Date = DateTime.Now;
 
 
+                        
+                        int error = DB.AddArrivedProductCheck(temp);
+                        DB.UpdateProductPriseWInArrived(ProductControllStatuss.ID, productPriceWithTaxAndPluss);
 
-                    int error = DB.AddArrivedProductCheck(temp);
-                    DB.UpdateProductPriseWInArrived(ProductControllStatuss.ID, productPriceWithTaxAndPluss);
-
-                    DB.UpdateProductPriseWithTaxInArrived(temp.SisseTuleb.ID, productPriceWithoutTax);
-                    if (error != 0)
-                    {
-                        MessageBox.Show("Was Added!", "Succesful");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error while adding!", "Error");
-                    }
+                        DB.UpdateProductPriseWithTaxInArrived(temp.SisseTuleb.ID, productPriceWithoutTax);
+                        if (error != 0)
+                        {
+                            MessageBox.Show("Was Added!", "Succesful",MessageBoxButton.OK,MessageBoxImage.Question);
+                        lTemp.Content = "Temporary data(" + arrivedProductCheckItems.Count() + ")";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error while adding!", "Error", MessageBoxButton.OK,MessageBoxImage.Error);
+                        }
+                   
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error " + ex.ToString() + "!", "Error"); ;
+                    MessageBox.Show("Error!", "Error", MessageBoxButton.OK,MessageBoxImage.Error); ;
                 }
+
+
             }
             else
             {
@@ -140,6 +147,7 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
+            lbl.Content = "Products(" + productItems.Count() + ")";
 
         }
 
@@ -153,6 +161,7 @@ namespace Project_WPF
             providerlList.ItemsSource = providerItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(providerlList.ItemsSource);
             view.Filter = ProviderFilter;
+            lProvider.Content = "Provider(" + providerItems.Count() + ")";
         }
 
 
@@ -165,6 +174,7 @@ namespace Project_WPF
                 arrivedProductCheckItems.Add(i);
             }
             ArrivedProductChecklList.ItemsSource = arrivedProductCheckItems;
+            lTemp.Content = "Temporary data(" + arrivedProductCheckItems.Count() + ")";
         }
 
 
@@ -273,6 +283,7 @@ namespace Project_WPF
                         Controll.dateTimeArrivedProduct = DateTime.Now;
                         arrivedProductCheckItems.Clear();
                         LoadProductData();
+                        lTemp.Content = "Temporary data(" + arrivedProductCheckItems.Count() + ")";
                     }
                     catch (Exception ex)
                     {
@@ -304,6 +315,7 @@ namespace Project_WPF
                     {
                         MessageBox.Show("Was deleted!", "Succesful");
                         ArrivedProductChecklList.SelectedIndex = 0;
+                        lTemp.Content = "Temporary data(" + arrivedProductCheckItems.Count() + ")";
                     }
                     else
                     {
@@ -378,6 +390,20 @@ namespace Project_WPF
             CollectionViewSource.GetDefaultView(ArrivedProductChecklList.ItemsSource).Refresh();
         }
 
-       
+        private static bool IsTextAllowed(string text)
+        {
+            Regex regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+            return !regex.IsMatch(text);
+        }
+
+        private void cbPriceAfterDot_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private void cbPriceBeforeDot_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
     }
 }

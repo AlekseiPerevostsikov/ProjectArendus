@@ -29,7 +29,7 @@
         </ListView>
         <TextBox x:Name="txtProductName" Height="23" Margin="0,23,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TextChanged="txtProductName_TextChanged" HorizontalAlignment="Right" Width="120"/>
         <Label Content="Search: " Margin="0,23,135,0" VerticalAlignment="Top" Height="23" Grid.Row="1" HorizontalAlignment="Right" Width="58"/>
-        <Label Content="Check Clients" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <Label x:Name="lCheck" Content="Check Clients" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="167"/>
 
     </Grid>
 </Window>

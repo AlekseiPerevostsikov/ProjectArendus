@@ -43,6 +43,7 @@ namespace Project_WPF
             cbClient.DisplayMemberPath = "Value";
             cbClient.SelectedValuePath = "Key";
             cbClient.SelectedIndex = 0;
+            lClient.Content = "Clients(" + cbClientData.Count() + ")";
 
             productlList.SelectedIndex = 0;
             cbProdyctQuntity.SelectedIndex = 0;
@@ -64,7 +65,7 @@ namespace Project_WPF
                 productItems.Add(i);
             }
             productlList.ItemsSource = productItems;
-
+            lProducts.Content = "Products(" + productItems.Count() + ")";
         }
 
 
@@ -76,7 +77,7 @@ namespace Project_WPF
                 basketItems.Add(i);
             }
             basketList.ItemsSource = basketItems;
-
+            lBasket.Content = "In Basket Products(" + basketItems.Count() + ")";
         }
 
 
@@ -208,6 +209,7 @@ namespace Project_WPF
                 cbProdyctQuntity.Items.Clear();
                 QuantityProductUpdateWhenProductChange();
                 LoadProductData();
+                lBasket.Content = "In Basket Products(" + basketItems.Count() + ")";
                 if (error != 0)
                 {
                     MessageBox.Show("Was Added!", "Succesful");
@@ -249,7 +251,7 @@ namespace Project_WPF
 
                         int arv = DB.DeleteBasket(deleteBasket);
                         basketList.SelectedIndex = 0;
-
+                        lBasket.Content = "In Basket Products(" + basketItems.Count() + ")";
                         if (arv != 0)
                         {
                             MessageBox.Show("Was deleted!", "Succesful");
@@ -290,6 +292,7 @@ namespace Project_WPF
                         }
                         Controll.dateTimeBuyProduct = DateTime.Now;
                         basketItems.Clear();
+                        lBasket.Content = "In Basket Products(" + basketItems.Count + ")";
                         // LoadProductData();
                     }
                     catch (Exception ex)
@@ -354,5 +357,24 @@ namespace Project_WPF
         }
 
 
+        private bool CustomFilter(object obj)
+        {
+            if (string.IsNullOrEmpty(searchclients.Text))
+            {
+                return true;
+            }
+            else
+            {
+                return (obj.ToString().IndexOf(searchclients.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
+
+        private void searchclients_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            CollectionView view = CollectionViewSource.GetDefaultView(cbClient.ItemsSource) as CollectionView;
+            view.Filter = CustomFilter;
+            CollectionViewSource.GetDefaultView(cbClient.ItemsSource).Refresh();
+        }
     }
 }
