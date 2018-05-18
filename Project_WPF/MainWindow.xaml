@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="333.03" Width="385" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="333.03" Width="385" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <Button x:Name="btnLogIn" Content="Log in" HorizontalAlignment="Left" Margin="145,192,0,0" VerticalAlignment="Top" Width="76" Click="btnLogIn_Click"/>
-        <Label Content="User name" HorizontalAlignment="Left" Margin="86,53,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="86,109,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnLogIn" Content="Log in" HorizontalAlignment="Left" Margin="131,213,0,0" VerticalAlignment="Top" Width="110" Click="btnLogIn_Click" IsDefault="True" Height="29"/>
+        <Label Content="Login:" HorizontalAlignment="Left" Margin="86,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="86,109,0,0" VerticalAlignment="Top"/>
+        <StackPanel FocusManager.FocusedElement="{Binding ElementName=txtUserName}">
         <TextBox x:Name="txtUserName" HorizontalAlignment="Left" Height="24" Margin="166,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="166,109,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+        </StackPanel>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="166,109,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
 
     </Grid>
 </Window>
