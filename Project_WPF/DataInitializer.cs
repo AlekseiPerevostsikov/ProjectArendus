@@ -8,7 +8,7 @@ using LaduDB;
 
 namespace Project_WPF
 {
-    public class DataInitializer : DropCreateDatabaseAlways<Context>
+    public class DataInitializer : DropCreateDatabaseIfModelChanges<Context>
     {
         protected override void Seed(Context context)
         {
