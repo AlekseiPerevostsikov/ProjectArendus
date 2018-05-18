@@ -29,3 +29,4 @@ C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debu
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.csproj.CopyComplete
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.dll
 C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.pdb
+C:\Users\Администратор\source\repos\ProjectSolution\LaduDB\obj\Debug\netstandard2.0\LaduDB.csprojResolveAssemblyReference.cache
