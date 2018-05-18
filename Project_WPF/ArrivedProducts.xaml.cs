@@ -29,13 +29,14 @@ namespace Project_WPF
 
         double productPriceWithoutTax;
         double productPriceWithTaxAndPluss;
+        
 
         // int productId;
 
         public ArrivedProducts()
         {
             InitializeComponent();
-
+            cbPriceAfterDot.MaxLength = 2;
         }
 
 
