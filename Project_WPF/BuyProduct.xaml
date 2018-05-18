@@ -29,11 +29,11 @@
             </ListView.View>
 
         </ListView>
-        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="72,146,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="22" Grid.Column="1"/>
-        <Label Content="Product quantity" HorizontalAlignment="Left" Margin="72,113,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26" Grid.Column="1"/>
-        <Button x:Name="btnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="41,199,0,0" VerticalAlignment="Top" Width="188" Grid.Row="1" Height="31" Grid.Column="1" Click="btnAddToBasket_Click"/>
-        <Label Content="Products" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26"/>
-        <Label Content="Product Basket" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="95" Grid.Row="2" Height="26"/>
+        <ComboBox x:Name="cbProdyctQuntity" HorizontalAlignment="Left" Margin="72,213,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="22" Grid.Column="1"/>
+        <Label Content="Product quantity" HorizontalAlignment="Left" Margin="72,182,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26" Grid.Column="1"/>
+        <Button x:Name="btnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="44,252,0,0" VerticalAlignment="Top" Width="188" Grid.Row="1" Height="31" Grid.Column="1" Click="btnAddToBasket_Click"/>
+        <Label x:Name="lProducts" Content="Products" HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26"/>
+        <Label x:Name="lBasket" Content="Product Basket" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="185" Grid.Row="2" Height="26"/>
         <ListView SelectedIndex="0" x:Name="basketList" Margin="10,43,0,10" RenderTransformOrigin="0.494,0.667" Grid.Row="2" SelectionChanged="BasketSelectionChanged">
 
             <ListView.View>
@@ -57,10 +57,11 @@
         <Button x:Name="btnDeleteFromBasket" Content="Delete Product" HorizontalAlignment="Left" Margin="57,151,0,0" VerticalAlignment="Top" Width="144" Grid.Row="2" Height="24" Grid.Column="1" Click="btnDeleteFromBasket_Click"/>
         <Button x:Name="btnConfirmBasket" Content="Confirm basket" HorizontalAlignment="Left" Margin="57,203,0,0" VerticalAlignment="Top" Width="144" Grid.Row="2" Height="23" Grid.Column="1" Click="btnConfirmBasket_Click"/>
         <Label Content="Change Product quantity" HorizontalAlignment="Left" Margin="57,47,0,0" VerticalAlignment="Top" Width="150" Grid.Row="2" Height="26" Grid.Column="1"/>
-        <ComboBox x:Name="cbClient" HorizontalAlignment="Left" Margin="72,82,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="22" Grid.Column="1"/>
-        <Label Content="Client" HorizontalAlignment="Left" Margin="72,51,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26" Grid.Column="1"/>
+        <Label x:Name="lClient" Content="Client" HorizontalAlignment="Left" Margin="72,4,0,0" VerticalAlignment="Top" Width="120" Grid.Row="1" Height="26" Grid.Column="1"/>
         <Button x:Name="btnAdd" Content="+" Grid.Column="1" HorizontalAlignment="Left" Margin="61,73,0,0" Grid.Row="2" VerticalAlignment="Top" Width="54" Click="btnAdd_Click" Height="34" FontSize="20"/>
         <Button x:Name="btnRemove" Content="-" Grid.Column="1" HorizontalAlignment="Left" Margin="144,73,0,0" Grid.Row="2" VerticalAlignment="Top" Width="54" Click="btnRemove_Click" Height="34" FontSize="20"/>
+        <ListBox SelectionMode="Single" x:Name="cbClient" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="72,62,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="searchclients" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="72,35,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="searchclients_TextChanged"/>
 
     </Grid>
 </Window>

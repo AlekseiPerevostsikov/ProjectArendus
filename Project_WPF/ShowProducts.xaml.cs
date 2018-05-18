@@ -38,6 +38,7 @@ namespace Project_WPF
             productlList.ItemsSource = productItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
             view.Filter = ProductFilter;
+            lProduct.Content = "Products(" + productItems.Count() + ")";
         }
 
         private bool ProductFilter(object item)

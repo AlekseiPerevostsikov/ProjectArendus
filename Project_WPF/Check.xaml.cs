@@ -42,6 +42,7 @@ namespace Project_WPF
                 chechkItems.Add(i);
             }
             checklList.ItemsSource = chechkItems;
+            lCheck.Content = "Check List(" + chechkItems.Count() + ")";
         }
 
         private void CheckSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -71,6 +71,7 @@ namespace Project_WPF
             productlList.ItemsSource = productItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(productlList.ItemsSource);
             view.Filter = ProductFilter;
+            lProducts.Content = "Products(" + productItems.Count() +")";
         }
 
         public void LoadProviderData()
@@ -83,6 +84,7 @@ namespace Project_WPF
             providerlList.ItemsSource = providerItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(providerlList.ItemsSource);
             view.Filter = ProviderFilter;
+            lProvider.Content = "Provider(" + providerItems.Count() + ")";
         }
 
 
@@ -96,6 +98,7 @@ namespace Project_WPF
             categorylList.ItemsSource = categoryItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(categorylList.ItemsSource);
             view.Filter = CategoryFilter;
+            lCategory.Content = "Category(" + categoryItems.Count() + ")";
         }
 
 
@@ -109,6 +112,7 @@ namespace Project_WPF
             subCategorylList.ItemsSource = subCategoryItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(subCategorylList.ItemsSource);
             view.Filter = SubCategoryFiltr;
+            lSubCat.Content = "Sub Category(" + subCategoryItems.Count() + ")";
         }
 
 
@@ -122,6 +126,7 @@ namespace Project_WPF
             clientList.ItemsSource = klientItems;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(clientList.ItemsSource);
             view.Filter = ClientFilter;
+            lClient.Content = "Client(" + klientItems.Count() + ")";
         }
 
 
