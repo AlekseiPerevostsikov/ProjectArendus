@@ -177,23 +177,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Администратор\\.nuget\\packages\\": {},
+    "C:\\Users\\artix\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Администратор\\source\\repos\\ProjectSolution\\LaduDB\\LaduDB.csproj",
+      "projectUniqueName": "C:\\Users\\artix\\Source\\Repos\\ProjectArendus\\LaduDB\\LaduDB.csproj",
       "projectName": "LaduDB",
-      "projectPath": "C:\\Users\\Администратор\\source\\repos\\ProjectSolution\\LaduDB\\LaduDB.csproj",
-      "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Администратор\\source\\repos\\ProjectSolution\\LaduDB\\obj\\",
+      "projectPath": "C:\\Users\\artix\\Source\\Repos\\ProjectArendus\\LaduDB\\LaduDB.csproj",
+      "packagesPath": "C:\\Users\\artix\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\artix\\Source\\Repos\\ProjectArendus\\LaduDB\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Администратор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\artix\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

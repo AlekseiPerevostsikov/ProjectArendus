@@ -348,7 +348,7 @@ namespace Project_WPF
         private bool TempProductFilter(object item)
         {
             var toode = (SisseTulebArv)item;
-            if (String.IsNullOrEmpty(txtProductName.Text))
+            if (String.IsNullOrEmpty(txtProductName_Copy.Text))
                 return true;
 
             else
@@ -356,7 +356,10 @@ namespace Project_WPF
                 || toode.SisseTuleb.Toode.Alamkategooria.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
                 || toode.SisseTuleb.Toode.Alamkategooria.Kategooria.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
                 || toode.SisseTuleb.Toode.KoodToode.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
-                || toode.Pakkuja.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase));
+                || toode.Pakkuja.Nimi.StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Date.Year.ToString().StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Date.Month.ToString().StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase)
+                || toode.Date.Day.ToString().StartsWith(txtProductName_Copy.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 

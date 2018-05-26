@@ -63,7 +63,10 @@ namespace Project_WPF
                 return (korv.Ostukorvi.Toode.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
                 || korv.Ostukorvi.Toode.Alamkategooria.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
                 || korv.Ostukorvi.Klient.Nimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
-                || korv.Ostukorvi.Klient.Perekonnanimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
+                || korv.Ostukorvi.Klient.Perekonnanimi.StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Date.Year.ToString().StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Date.Month.ToString().StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase)
+                || korv.Date.Day.ToString().StartsWith(txtProductName.Text, StringComparison.OrdinalIgnoreCase));
 
         }
 
